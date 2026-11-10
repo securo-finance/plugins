@@ -1,0 +1,89 @@
+# Securo plugins
+
+The index behind the plugin catalog in [Securo](https://github.com/securo-finance/securo).
+
+A plugin is a public GitHub repository with a `securo-plugin.json` at its root. It brings data to a workspace: categories, category groups and rules. Securo shows a preview of exactly what changes before anything is installed, and only someone who can edit the workspace can install a plugin.
+
+There's no review step: any repository with the `securo-plugin` topic, a release and a valid manifest is listed. Plugins aren't reviewed by the Securo team, so read the preview.
+
+## Publish a plugin
+
+1. Create a public repository and add `securo-plugin.json` at its root (start from [`examples/streaming`](examples/streaming)).
+2. Add the `securo-plugin` topic to the repository.
+3. Publish a GitHub release. The index pins your plugin to the commit of the latest release, never to a branch, so pushing to `main` changes nothing until you release.
+
+The index is rebuilt every 6 hours. A new release appears as an update for workspaces that have the plugin installed.
+
+## The manifest
+
+```json
+{
+  "id": "your-name/streaming",
+  "name": { "en": "Streaming", "pt-BR": "Streaming" },
+  "description": "A Streaming category with rules for the common video and music services.",
+  "version": "1.0.0",
+  "repository": "https://github.com/your-name/streaming",
+  "license": "MIT",
+  "min_securo_version": "0.18.0",
+  "contributes": {
+    "category_groups": [],
+    "categories": [{ "key": "streaming", "name": "Streaming", "group": "lifestyle", "icon": "tv" }],
+    "rules": [
+      {
+        "key": "video-and-music",
+        "name": "Streaming services",
+        "conditions_op": "or",
+        "conditions": [{ "field": "description", "op": "contains", "value": "NETFLIX" }],
+        "actions": [{ "op": "set_category", "value": "streaming" }]
+      }
+    ]
+  }
+}
+```
+
+- `id` is `owner/repository` in lowercase and must match where the plugin lives, as must `repository`.
+- `version` is `MAJOR.MINOR.PATCH`; bump it with every release.
+- Any text can be a string or a map of locales with an `en` entry.
+- `key` identifies an item across versions: keep it stable, since renaming a key replaces the item. A category's `group` and a rule's `set_category` name a key of this plugin or a built-in one (`food`, `groceries`, `transport`, `lifestyle`, ...).
+- Rule conditions use `description`, `payee`, `notes`, `amount`, `type`, `date` or `status`; actions are `set_category`, `set_description`, `append_notes` and `ignore`.
+- Plugins can't run code: a manifest with `runtime`, `network` or `api_scopes` is refused.
+
+Securo validates the whole manifest again before installing, so the preview is the final word on whether it applies.
+
+## Test your plugin locally
+
+You don't need to publish anything to try a plugin in your own Securo:
+
+```bash
+python3 build_index.py local path/to/your-plugin --out site
+python3 -m http.server 8787 --bind 127.0.0.1 --directory site
+```
+
+Then start Securo with:
+
+```bash
+PLUGINS_ENABLED=true
+PLUGINS_INDEX_URL=http://127.0.0.1:8787/v1/index.json
+```
+
+When Securo runs in Docker, use `http://host.docker.internal:8787/v1/index.json` instead. Rebuild the index after each change to the manifest; the catalog checks each copy against its sha256.
+
+## The index format
+
+`v1/index.json` lists every plugin with its pinned commit, the sha256 of the copied manifest and README, and what the catalog shows (name, description, counts per kind, locales, stars, dates). Securo fetches the index only when someone opens the catalog, reads manifests and READMEs only from the index's own host and refuses any copy whose sha256 doesn't match. No instance talks to GitHub, and nothing is counted: popularity is GitHub stars.
+
+You can host a mirror or your own index anywhere that serves static files and point `PLUGINS_INDEX_URL` at it.
+
+## Revoking a plugin
+
+[`revoked.json`](revoked.json) is the one list kept by hand:
+
+```json
+[{ "id": "someone/plugin", "reason": "Recategorizes every transaction" }]
+```
+
+A revoked plugin can't be installed or updated; workspaces that have it can still remove it. To report a plugin, open an issue.
+
+## License
+
+[AGPL-3.0](LICENSE)

@@ -1,0 +1,31 @@
+{
+  "id": "your-name/streaming",
+  "name": { "en": "Streaming", "pt-BR": "Streaming" },
+  "description": {
+    "en": "A Streaming category with rules for the common video and music services.",
+    "pt-BR": "Uma categoria Streaming com regras para os serviços de vídeo e música mais comuns."
+  },
+  "version": "1.0.0",
+  "repository": "https://github.com/your-name/streaming",
+  "license": "MIT",
+  "min_securo_version": "0.18.0",
+  "contributes": {
+    "categories": [
+      { "key": "streaming", "name": { "en": "Streaming", "pt-BR": "Streaming" }, "group": "lifestyle", "icon": "tv", "color": "#8B5CF6" }
+    ],
+    "rules": [
+      {
+        "key": "video-and-music",
+        "name": "Streaming services",
+        "conditions_op": "or",
+        "conditions": [
+          { "field": "description", "op": "contains", "value": "NETFLIX" },
+          { "field": "description", "op": "contains", "value": "SPOTIFY" },
+          { "field": "description", "op": "contains", "value": "DISNEY PLUS" },
+          { "field": "description", "op": "contains", "value": "YOUTUBE PREMIUM" }
+        ],
+        "actions": [{ "op": "set_category", "value": "streaming" }]
+      }
+    ]
+  }
+}
