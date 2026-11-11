@@ -163,8 +163,8 @@ class Output:
                 entry |= {"revoked": True, "revoked_reason": revoked[entry["id"]] or None}
         self.entries.sort(key=lambda e: e["id"])
         path = self.v1 / "index.json"
-        path.write_text(json.dumps({"generated_at": iso(now()), "plugins": self.entries, **(extra or {})},
-                                   indent=2, ensure_ascii=False) + "\n")
+        # No timestamp: an index that didn't change is byte for byte the same, so publishing it is a no-op.
+        path.write_text(json.dumps({"plugins": self.entries, **(extra or {})}, indent=2, ensure_ascii=False) + "\n")
         return path
 
 
@@ -278,7 +278,9 @@ def build_github(gh: GitHub, out: Output, state: dict) -> tuple[int, dict]:
                     stars_7d=stars_gained(history, stars, today),
                     topics=sorted(t for t in repo.get("topics", []) if t != TOPIC),
                     added_at=added_at, updated_at=_parse_time(release.get("published_at")) or today)
-            seen[manifest["id"]] = {"added_at": iso(added_at), "stars": history + [[iso(today), stars]]}
+            # One count a day is enough for a weekly trend, and keeps the file from changing every run.
+            history = [h for h in history if h[0][:10] != iso(today)[:10]] + [[iso(today), stars]]
+            seen[manifest["id"]] = {"added_at": iso(added_at), "stars": history}
             print(f"✓ {manifest['id']} {manifest['version']} ({tag})")
         except (Invalid, urllib.error.URLError, KeyError, ValueError) as exc:
             print(f"✗ {full}: {exc}", file=sys.stderr)
