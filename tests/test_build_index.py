@@ -13,6 +13,7 @@ sys.path.insert(0, str(ROOT))
 import build_index  # noqa: E402
 
 EXAMPLE = ROOT / "examples" / "streaming"
+CODE_EXAMPLE = ROOT / "examples" / "hello-sync"
 
 
 class LocalIndex(unittest.TestCase):
@@ -40,7 +41,27 @@ class LocalIndex(unittest.TestCase):
         (folder / "securo-plugin.json").write_text(json.dumps({"id": "a/b", "runtime": "node"}))
         result, _ = self.build(folder)
         self.assertEqual(result.returncode, 1)
-        self.assertIn("code aren't supported", result.stderr)
+        self.assertIn("runtime", result.stderr)
+
+    def test_a_plugin_with_code_ships_its_source(self):
+        import io
+        import tarfile
+
+        result, v1 = self.build(CODE_EXAMPLE)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        [entry] = json.loads((v1 / "index.json").read_text())["plugins"]
+        self.assertEqual(entry["contributes"], {"integrations": 1})
+        archive = (v1 / entry["archive"]).read_bytes()
+        self.assertEqual(hashlib.sha256(archive).hexdigest(), entry["archive_sha256"])
+        with tarfile.open(fileobj=io.BytesIO(archive)) as tar:
+            names = tar.getnames()
+        self.assertIn("plugin/hello_sync/plugin.py", names)
+        self.assertIn("plugin/securo-plugin.json", names)
+
+    def test_data_plugins_ship_no_source(self):
+        _, v1 = self.build(EXAMPLE)
+        [entry] = json.loads((v1 / "index.json").read_text())["plugins"]
+        self.assertNotIn("archive", entry)
 
 
 class Manifest(unittest.TestCase):

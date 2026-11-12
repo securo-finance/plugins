@@ -1,0 +1,2 @@
+# Every package pinned with its hash: `uv export --format requirements-txt > requirements.txt`.
+# This example needs nothing beyond the standard library.

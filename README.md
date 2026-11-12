@@ -2,7 +2,7 @@
 
 The index behind the plugin catalog in [Securo](https://github.com/securo-finance/securo).
 
-A plugin is a public GitHub repository with a `securo-plugin.json` at its root. It brings data to a workspace: categories, category groups and rules. Securo shows a preview of exactly what changes before anything is installed, and only someone who can edit the workspace can install a plugin.
+A plugin is a public GitHub repository with a `securo-plugin.json` at its root. A data plugin brings categories, category groups and rules to a workspace. A plugin with code adds integrations with outside services, run by Securo in an isolated runner. Securo shows a preview of exactly what changes before anything is installed: for a plugin with code, the hosts it reaches and what it may read or change, each with your stated reason.
 
 There's no review step: any repository with the `securo-plugin` topic, a release and a valid manifest is listed. Plugins aren't reviewed by the Securo team, so read the preview.
 
@@ -46,9 +46,38 @@ The index is rebuilt every 6 hours. A new release appears as an update for works
 - Any text can be a string or a map of locales with an `en` entry.
 - `key` identifies an item across versions: keep it stable, since renaming a key replaces the item. A category's `group` and a rule's `set_category` name a key of this plugin or a built-in one (`food`, `groceries`, `transport`, `lifestyle`, ...).
 - Rule conditions use `description`, `payee`, `notes`, `amount`, `type`, `date` or `status`; actions are `set_category`, `set_description`, `append_notes` and `ignore`.
-- Plugins can't run code: a manifest with `runtime`, `network` or `api_scopes` is refused.
+- Plugins with code add `runtime`, `network` and `api_scopes` (below).
 
 Securo validates the whole manifest again before installing, so the preview is the final word on whether it applies.
+
+## Plugins with code
+
+Start from [`examples/hello-sync`](examples/hello-sync). On top of the fields above:
+
+```json
+{
+  "runtime": { "entrypoint": "hello_sync.plugin:plugin", "lockfile": "requirements.txt" },
+  "network": [{ "host": "api.example.com", "purpose": "Reads your payouts" }],
+  "api_scopes": [{ "scope": "transactions:write", "purpose": "Adds your payouts as transactions" }],
+  "contributes": {
+    "integrations": [
+      {
+        "key": "account",
+        "name": "Example",
+        "auth": "credentials",
+        "fields": [{ "key": "api_key", "label": "API key", "secret": true }],
+        "sync_minutes": 60
+      }
+    ]
+  }
+}
+```
+
+- `runtime.entrypoint` is `module:attribute`. Securo calls `attribute.<method>(params, context)`: `sync` on the schedule, and `oauth_url` / `oauth_exchange` for integrations with `"auth": "oauth"`. The example's docstring describes `context` and what `sync` returns.
+- `runtime.lockfile` is a requirements file with a hash for every package (`uv export --format requirements-txt`). Packages install as wheels only, for Python 3.14.
+- `network` lists every host the code may reach. Anything else is refused, and so are private addresses. Without `network`, nothing leaves the server.
+- `api_scopes` gives the code a token for Securo's API, limited to those scopes, for each connection. Leave it out if the plugin doesn't touch the workspace.
+- Only the workspace owner can install a plugin with code. The index copies the source at the release commit; Securo installs only that copy, checked against its sha256.
 
 ## Test your plugin locally
 
@@ -70,7 +99,7 @@ When Securo runs in Docker, use `http://host.docker.internal:8787/v1/index.json`
 
 ## The index format
 
-`v1/index.json` lists every plugin with its pinned commit, the sha256 of the copied manifest and README, and what the catalog shows (name, description, counts per kind, locales, stars, dates). Securo fetches the index only when someone opens the catalog, reads manifests and READMEs only from the index's own host and refuses any copy whose sha256 doesn't match. No instance talks to GitHub, and nothing is counted: popularity is GitHub stars.
+`v1/index.json` lists every plugin with its pinned commit, the sha256 of the copied manifest, README and, for plugins with code, source archive, and what the catalog shows (name, description, counts per kind, locales, stars, dates). Securo fetches the index only when someone opens the catalog, reads manifests and READMEs only from the index's own host and refuses any copy whose sha256 doesn't match. No instance talks to GitHub, and nothing is counted: popularity is GitHub stars.
 
 You can host a mirror or your own index anywhere that serves static files and point `PLUGINS_INDEX_URL` at it.
 

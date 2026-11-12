@@ -1,0 +1,27 @@
+{
+  "id": "your-name/hello-sync",
+  "name": { "en": "Hello sync", "pt-BR": "Olá sincronização" },
+  "description": {
+    "en": "A plugin with code that does nothing useful: a starting point for an integration.",
+    "pt-BR": "Um plugin com código que não faz nada de útil: um ponto de partida para uma integração."
+  },
+  "version": "1.0.0",
+  "repository": "https://github.com/your-name/hello-sync",
+  "license": "MIT",
+  "min_securo_version": "0.19.0",
+  "runtime": { "entrypoint": "hello_sync.plugin:plugin", "lockfile": "requirements.txt" },
+  "contributes": {
+    "integrations": [
+      {
+        "key": "hello",
+        "name": { "en": "Hello", "pt-BR": "Olá" },
+        "auth": "credentials",
+        "fields": [
+          { "key": "greeting", "label": { "en": "Greeting", "pt-BR": "Saudação" }, "required": false },
+          { "key": "token", "label": { "en": "Any secret", "pt-BR": "Qualquer segredo" }, "secret": true }
+        ],
+        "sync_minutes": 60
+      }
+    ]
+  }
+}

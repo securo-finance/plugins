@@ -7,7 +7,8 @@ Two modes, one output:
     build_index.py local PATH... --out site  # plugin folders on disk, to test your own
 
 The output is `site/v1/index.json` plus a copy of each plugin's manifest and
-README, each named in the index with its sha256. Serve `site/` with any static
+README and, for plugins with code, of its source at the pinned commit, each
+named in the index with its sha256. Serve `site/` with any static
 file server and point `PLUGINS_INDEX_URL` at `.../v1/index.json`.
 
 Only the standard library is used, so authors can run this as is (Python 3.11+).
@@ -19,8 +20,10 @@ import hashlib
 import json
 import os
 import re
+import io
 import subprocess
 import sys
+import tarfile
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -31,6 +34,7 @@ TOPIC = "securo-plugin"
 MANIFEST_FILE = "securo-plugin.json"
 MAX_MANIFEST_BYTES = 2 << 20
 MAX_README_BYTES = 256 << 10
+MAX_ARCHIVE_BYTES = 20 << 20
 README_NAMES = ("README.md", "readme.md", "Readme.md")
 
 # The same patterns Securo checks; Securo validates the whole manifest again
@@ -95,8 +99,10 @@ def check_manifest(body: bytes, *, plugin_id: str | None = None, repository: str
     if not isinstance(manifest, dict):
         raise Invalid(f"{MANIFEST_FILE} isn't an object")
     code = [field for field in CODE_FIELDS if field in manifest]
-    if code:
-        raise Invalid(f"plugins with code aren't supported yet ({', '.join(code)})")
+    if code and not isinstance(manifest.get("runtime"), dict):
+        raise Invalid(f"{', '.join(code)} need a `runtime` with an `entrypoint`")
+    if code and not isinstance(manifest["runtime"].get("entrypoint"), str):
+        raise Invalid("`runtime.entrypoint` is missing")
     for field, pattern in (("id", ID_PATTERN), ("version", VERSION_PATTERN),
                            ("min_securo_version", VERSION_PATTERN), ("repository", REPOSITORY_PATTERN)):
         if not isinstance(manifest.get(field), str) or not pattern.match(manifest[field]):
@@ -124,10 +130,11 @@ class Output:
         self.v1 = root / "v1"
         (self.v1 / "manifests").mkdir(parents=True, exist_ok=True)
         (self.v1 / "readmes").mkdir(parents=True, exist_ok=True)
+        (self.v1 / "archives").mkdir(parents=True, exist_ok=True)
         self.entries: list[dict] = []
 
     def add(self, manifest: dict, manifest_body: bytes, readme: bytes | None, *, commit: str, release: str,
-            stars: int = 0, stars_7d: int = 0, topics: list[str] | None = None,
+            archive: bytes | None = None, stars: int = 0, stars_7d: int = 0, topics: list[str] | None = None,
             added_at: datetime | None = None, updated_at: datetime | None = None) -> dict:
         stem = f"{manifest['id'].replace('/', '--')}--{commit}"
         (self.v1 / "manifests" / f"{stem}.json").write_bytes(manifest_body)
@@ -154,6 +161,14 @@ class Output:
         if readme is not None and len(readme) <= MAX_README_BYTES:
             (self.v1 / "readmes" / f"{stem}.md").write_bytes(readme)
             entry |= {"readme": f"readmes/{stem}.md", "readme_sha256": sha256(readme)}
+        if "runtime" in manifest:
+            # Securo installs code only from this copy, checked against this sha256.
+            if archive is None:
+                raise Invalid("a plugin with code needs its source archive")
+            if len(archive) > MAX_ARCHIVE_BYTES:
+                raise Invalid(f"the source archive is larger than {MAX_ARCHIVE_BYTES} bytes")
+            (self.v1 / "archives" / f"{stem}.tar.gz").write_bytes(archive)
+            entry |= {"archive": f"archives/{stem}.tar.gz", "archive_sha256": sha256(archive)}
         self.entries.append(entry)
         return entry
 
@@ -189,6 +204,17 @@ def _git_commit(folder: Path) -> str:
     return hashlib.sha1((folder / MANIFEST_FILE).read_bytes()).hexdigest()
 
 
+def _archive_folder(folder: Path) -> bytes:
+    """The folder's files as they are now, as a release tarball would hold them (no .git, no caches)."""
+    buffer = io.BytesIO()
+    with tarfile.open(fileobj=buffer, mode="w:gz") as tar:
+        for path in sorted(folder.rglob("*")):
+            parts = path.relative_to(folder).parts
+            if path.is_file() and not path.is_symlink() and not {".git", "__pycache__"} & set(parts):
+                tar.add(path, arcname=f"plugin/{path.relative_to(folder).as_posix()}")
+    return buffer.getvalue()
+
+
 def build_local(folders: list[Path], out: Output) -> int:
     failed = 0
     for folder in folders:
@@ -201,8 +227,14 @@ def build_local(folders: list[Path], out: Output) -> int:
             continue
         readme = next((folder / n for n in README_NAMES if (folder / n).exists()), None)
         stamp = now()
-        out.add(manifest, body, readme.read_bytes() if readme else None, commit=_git_commit(folder),
-                release=f"v{manifest['version']}", added_at=stamp, updated_at=stamp)
+        archive = _archive_folder(folder) if "runtime" in manifest else None
+        try:
+            out.add(manifest, body, readme.read_bytes() if readme else None, commit=_git_commit(folder),
+                    release=f"v{manifest['version']}", archive=archive, added_at=stamp, updated_at=stamp)
+        except Invalid as exc:
+            print(f"✗ {folder}: {exc}", file=sys.stderr)
+            failed += 1
+            continue
         print(f"✓ {manifest['id']} {manifest['version']}")
     return failed
 
@@ -270,11 +302,15 @@ def build_github(gh: GitHub, out: Output, state: dict) -> tuple[int, dict]:
                 readme = gh.get(f"/repos/{full}/readme?ref={commit}", accept="application/vnd.github.raw")
             except (urllib.error.HTTPError, Invalid):
                 readme = None
+            archive = None
+            if "runtime" in manifest:
+                archive = gh.get(f"https://codeload.github.com/{full}/tar.gz/{commit}", accept="application/gzip",
+                                 limit=MAX_ARCHIVE_BYTES)
             known = state.get(manifest["id"], {})
             added_at = _parse_time(known.get("added_at")) or today
             history = [h for h in known.get("stars", []) if _parse_time(h[0]) > today - timedelta(days=30)]
             stars = repo["stargazers_count"]
-            out.add(manifest, body, readme, commit=commit, release=tag, stars=stars,
+            out.add(manifest, body, readme, commit=commit, release=tag, archive=archive, stars=stars,
                     stars_7d=stars_gained(history, stars, today),
                     topics=sorted(t for t in repo.get("topics", []) if t != TOPIC),
                     added_at=added_at, updated_at=_parse_time(release.get("published_at")) or today)
