@@ -1,6 +1,57 @@
 {
   "plugins": [
     {
+      "id": "securo-finance/plugin-neon-themes",
+      "repository": "https://github.com/securo-finance/plugin-neon-themes",
+      "release": "v1.0.0",
+      "commit": "a507695a967767dc2886201fc94314e7fb51b730",
+      "manifest": "manifests/securo-finance--plugin-neon-themes--a507695a967767dc2886201fc94314e7fb51b730.json",
+      "manifest_sha256": "1233bcd5e4f57f6f5c0ee06bdeae3d7c3224f77d21f1b8ca826c858f5f9decd1",
+      "name": {
+        "en": "Neon themes",
+        "pt-BR": "Temas neon",
+        "pt-PT": "Temas néon",
+        "es": "Temas neón",
+        "fr": "Thèmes néon",
+        "de": "Neon-Themes",
+        "it": "Temi neon"
+      },
+      "description": {
+        "en": "Four bold looks for Securo: Synthwave, Matrix, Amber CRT and Cyberpunk, with neon colors, monospace text and sharp corners.",
+        "pt-BR": "Quatro visuais ousados para o Securo: Synthwave, Matrix, CRT âmbar e Cyberpunk, com cores neon, texto monoespaçado e cantos retos.",
+        "pt-PT": "Quatro visuais ousados para o Securo: Synthwave, Matrix, CRT âmbar e Cyberpunk, com cores néon, texto monoespaçado e cantos retos.",
+        "es": "Cuatro estilos atrevidos para Securo: Synthwave, Matrix, CRT ámbar y Cyberpunk, con colores neón, texto monoespaciado y esquinas rectas.",
+        "fr": "Quatre styles audacieux pour Securo : Synthwave, Matrix, CRT ambre et Cyberpunk, avec des couleurs néon, du texte à chasse fixe et des angles droits.",
+        "de": "Vier kräftige Looks für Securo: Synthwave, Matrix, Bernstein-CRT und Cyberpunk, mit Neonfarben, Monospace-Schrift und eckigen Kanten.",
+        "it": "Quattro stili audaci per Securo: Synthwave, Matrix, CRT ambra e Cyberpunk, con colori neon, testo monospaziato e angoli netti."
+      },
+      "version": "1.0.0",
+      "license": "AGPL-3.0-only",
+      "min_securo_version": "0.19.0",
+      "contributes": {
+        "themes": 4
+      },
+      "locales": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "pt-BR",
+        "pt-PT"
+      ],
+      "topics": [
+        "securo",
+        "theme"
+      ],
+      "stars": 0,
+      "stars_7d": 0,
+      "added_at": "2026-11-14T15:35:57Z",
+      "updated_at": "2026-11-14T15:34:25Z",
+      "readme": "readmes/securo-finance--plugin-neon-themes--a507695a967767dc2886201fc94314e7fb51b730.md",
+      "readme_sha256": "2bc23ae7ce69834143f0614c5e6fe9ea0b55f42b572da0ab2e88291888ca5609"
+    },
+    {
       "id": "securo-finance/plugin-pets",
       "repository": "https://github.com/securo-finance/plugin-pets",
       "release": "v1.0.0",

@@ -1,0 +1,199 @@
+{
+  "id": "securo-finance/plugin-neon-themes",
+  "name": {
+    "en": "Neon themes",
+    "pt-BR": "Temas neon",
+    "pt-PT": "Temas néon",
+    "es": "Temas neón",
+    "fr": "Thèmes néon",
+    "de": "Neon-Themes",
+    "it": "Temi neon"
+  },
+  "description": {
+    "en": "Four bold looks for Securo: Synthwave, Matrix, Amber CRT and Cyberpunk, with neon colors, monospace text and sharp corners.",
+    "pt-BR": "Quatro visuais ousados para o Securo: Synthwave, Matrix, CRT âmbar e Cyberpunk, com cores neon, texto monoespaçado e cantos retos.",
+    "pt-PT": "Quatro visuais ousados para o Securo: Synthwave, Matrix, CRT âmbar e Cyberpunk, com cores néon, texto monoespaçado e cantos retos.",
+    "es": "Cuatro estilos atrevidos para Securo: Synthwave, Matrix, CRT ámbar y Cyberpunk, con colores neón, texto monoespaciado y esquinas rectas.",
+    "fr": "Quatre styles audacieux pour Securo : Synthwave, Matrix, CRT ambre et Cyberpunk, avec des couleurs néon, du texte à chasse fixe et des angles droits.",
+    "de": "Vier kräftige Looks für Securo: Synthwave, Matrix, Bernstein-CRT und Cyberpunk, mit Neonfarben, Monospace-Schrift und eckigen Kanten.",
+    "it": "Quattro stili audaci per Securo: Synthwave, Matrix, CRT ambra e Cyberpunk, con colori neon, testo monospaziato e angoli netti."
+  },
+  "version": "1.0.0",
+  "repository": "https://github.com/securo-finance/plugin-neon-themes",
+  "license": "AGPL-3.0-only",
+  "min_securo_version": "0.19.0",
+  "contributes": {
+    "themes": [
+      {
+        "key": "synthwave",
+        "name": {
+          "en": "Synthwave",
+          "pt-BR": "Synthwave"
+        },
+        "radius": 0.75,
+        "dark": {
+          "background": "#0D0221",
+          "foreground": "#F8E9FF",
+          "card": "#180536",
+          "primary": "#FF2BD6",
+          "primary-foreground": "#1A0016",
+          "muted": "#24104A",
+          "muted-foreground": "#C9A7F0",
+          "border": "#3A1A6B",
+          "chart-1": "#FF2BD6",
+          "chart-2": "#2DE2E6",
+          "chart-3": "#F9C80E",
+          "chart-4": "#FF6C11",
+          "chart-5": "#9D4EDD",
+          "chart-6": "#00F5D4",
+          "chart-income": "#2DE2E6",
+          "chart-expense": "#FF2BD6"
+        },
+        "light": {
+          "background": "#FFF4FD",
+          "foreground": "#2A0A3D",
+          "card": "#FFFFFF",
+          "primary": "#B5179E",
+          "primary-foreground": "#FFFFFF",
+          "muted": "#F6E3F8",
+          "muted-foreground": "#6E3B82",
+          "border": "#EBCBEF",
+          "chart-1": "#B5179E",
+          "chart-2": "#0E9AA7",
+          "chart-3": "#C77D00",
+          "chart-4": "#E2550B",
+          "chart-5": "#7B2CBF",
+          "chart-6": "#00A389"
+        }
+      },
+      {
+        "key": "matrix",
+        "name": {
+          "en": "Matrix",
+          "pt-BR": "Matrix"
+        },
+        "radius": 0,
+        "font": "mono",
+        "dark": {
+          "background": "#000000",
+          "foreground": "#B6FFB9",
+          "card": "#020A03",
+          "primary": "#00FF41",
+          "primary-foreground": "#001A07",
+          "muted": "#071A0A",
+          "muted-foreground": "#5FD068",
+          "border": "#0F3315",
+          "chart-1": "#00FF41",
+          "chart-2": "#00C853",
+          "chart-3": "#76FF03",
+          "chart-4": "#1DE9B6",
+          "chart-5": "#64DD17",
+          "chart-6": "#00E676",
+          "chart-income": "#00FF41",
+          "chart-expense": "#FF3B3B"
+        },
+        "light": {
+          "background": "#F3FFF4",
+          "foreground": "#002B0A",
+          "card": "#FFFFFF",
+          "primary": "#007A1F",
+          "primary-foreground": "#FFFFFF",
+          "muted": "#E1F5E4",
+          "muted-foreground": "#2E6B3A",
+          "border": "#BFE3C5",
+          "chart-1": "#007A1F",
+          "chart-2": "#00873E",
+          "chart-3": "#4C8C00",
+          "chart-4": "#00897B",
+          "chart-5": "#558B2F",
+          "chart-6": "#00A152"
+        }
+      },
+      {
+        "key": "amber-crt",
+        "name": {
+          "en": "Amber CRT",
+          "pt-BR": "CRT âmbar"
+        },
+        "radius": 0.125,
+        "font": "mono",
+        "dark": {
+          "background": "#0A0600",
+          "foreground": "#FFD08A",
+          "card": "#140C00",
+          "primary": "#FFB000",
+          "primary-foreground": "#1F1300",
+          "muted": "#221500",
+          "muted-foreground": "#D8A050",
+          "border": "#3A2500",
+          "chart-1": "#FFB000",
+          "chart-2": "#FF8C00",
+          "chart-3": "#FFD166",
+          "chart-4": "#E09F3E",
+          "chart-5": "#FFCB47",
+          "chart-6": "#C77700",
+          "chart-income": "#FFD166",
+          "chart-expense": "#FF6B35"
+        },
+        "light": {
+          "background": "#FFF8EC",
+          "foreground": "#3B2300",
+          "card": "#FFFFFF",
+          "primary": "#9A5B00",
+          "primary-foreground": "#FFFFFF",
+          "muted": "#FBEBD0",
+          "muted-foreground": "#7A4E12",
+          "border": "#EED4A8",
+          "chart-1": "#9A5B00",
+          "chart-2": "#B5530A",
+          "chart-3": "#A87B00",
+          "chart-4": "#8F5E1F",
+          "chart-5": "#C17800",
+          "chart-6": "#7A4A00"
+        }
+      },
+      {
+        "key": "cyberpunk",
+        "name": {
+          "en": "Cyberpunk",
+          "pt-BR": "Cyberpunk"
+        },
+        "radius": 0.25,
+        "dark": {
+          "background": "#0B0C10",
+          "foreground": "#EAF7FF",
+          "card": "#13151C",
+          "primary": "#FCEE0A",
+          "primary-foreground": "#141400",
+          "muted": "#1C1F29",
+          "muted-foreground": "#8FB3C9",
+          "border": "#262A38",
+          "chart-1": "#FCEE0A",
+          "chart-2": "#00F0FF",
+          "chart-3": "#FF003C",
+          "chart-4": "#B026FF",
+          "chart-5": "#39FF14",
+          "chart-6": "#FF8A00",
+          "chart-income": "#00F0FF",
+          "chart-expense": "#FF003C"
+        },
+        "light": {
+          "background": "#FBFBF2",
+          "foreground": "#14151A",
+          "card": "#FFFFFF",
+          "primary": "#5C5600",
+          "primary-foreground": "#FFFFFF",
+          "muted": "#F0F0DC",
+          "muted-foreground": "#4C5560",
+          "border": "#DDDDC4",
+          "chart-1": "#8A8000",
+          "chart-2": "#007C85",
+          "chart-3": "#C4002E",
+          "chart-4": "#7A1ACC",
+          "chart-5": "#2E8C10",
+          "chart-6": "#C26A00"
+        }
+      }
+    ]
+  }
+}
