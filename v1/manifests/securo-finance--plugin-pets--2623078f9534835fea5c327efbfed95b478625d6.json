@@ -1,0 +1,558 @@
+{
+  "id": "securo-finance/plugin-pets",
+  "name": {
+    "en": "Pets",
+    "pt-BR": "Pets",
+    "pt-PT": "Animais de estimação",
+    "es": "Mascotas",
+    "fr": "Animaux",
+    "de": "Haustiere",
+    "it": "Animali domestici"
+  },
+  "description": {
+    "en": "A Pets group with categories and rules for pet stores and food, vets, grooming and pet insurance: Petz, Cobasi, Petlove, Chewy, Zooplus and more.",
+    "pt-BR": "Um grupo Pets com categorias e regras para pet shop e ração, veterinário, banho e tosa e plano de saúde pet: Petz, Cobasi, Petlove, DogHero e outros.",
+    "pt-PT": "Um grupo Animais de estimação com categorias e regras para lojas e comida, veterinário, banhos e cuidados e seguro do animal: Zooplus, Kiwoko e outros.",
+    "es": "Un grupo Mascotas con categorías y reglas para tiendas y comida, veterinario, peluquería y seguro de mascotas: Kiwoko, Tiendanimal, Zooplus y más.",
+    "fr": "Un groupe Animaux avec des catégories et des règles pour animalerie et nourriture, vétérinaire, toilettage et assurance : Maxi Zoo, Wanimo, Zooplus et plus.",
+    "de": "Eine Gruppe Haustiere mit Kategorien und Regeln für Tierbedarf und Futter, Tierarzt, Pflege und Tierversicherung: Fressnapf, Futterhaus, Zooplus und mehr.",
+    "it": "Un gruppo Animali domestici con categorie e regole per negozi e cibo, veterinario, toelettatura e assicurazione: Arcaplanet, Isola dei Tesori, Zooplus e altro."
+  },
+  "version": "1.1.0",
+  "repository": "https://github.com/securo-finance/plugin-pets",
+  "license": "AGPL-3.0-only",
+  "min_securo_version": "0.19.0",
+  "contributes": {
+    "category_groups": [
+      {
+        "key": "pets",
+        "name": {
+          "en": "Pets",
+          "pt-BR": "Pets",
+          "pt-PT": "Animais",
+          "es": "Mascotas",
+          "fr": "Animaux",
+          "de": "Haustiere",
+          "it": "Animali"
+        },
+        "icon": "paw-print",
+        "color": "#D97706"
+      }
+    ],
+    "categories": [
+      {
+        "key": "pet-supplies",
+        "name": {
+          "en": "Pet store & food",
+          "pt-BR": "Pet shop e ração",
+          "pt-PT": "Loja e comida",
+          "es": "Tienda y comida",
+          "fr": "Animalerie et nourriture",
+          "de": "Tierbedarf & Futter",
+          "it": "Negozio e cibo"
+        },
+        "group": "pets",
+        "icon": "dog",
+        "color": "#D97706"
+      },
+      {
+        "key": "vet",
+        "name": {
+          "en": "Vet",
+          "pt-BR": "Veterinário",
+          "pt-PT": "Veterinário",
+          "es": "Veterinario",
+          "fr": "Vétérinaire",
+          "de": "Tierarzt",
+          "it": "Veterinario"
+        },
+        "group": "pets",
+        "icon": "stethoscope",
+        "color": "#B45309"
+      },
+      {
+        "key": "pet-services",
+        "name": {
+          "en": "Grooming & care",
+          "pt-BR": "Banho, tosa e cuidados",
+          "pt-PT": "Banhos e cuidados",
+          "es": "Peluquería y cuidados",
+          "fr": "Toilettage et garde",
+          "de": "Pflege & Betreuung",
+          "it": "Toelettatura e cura"
+        },
+        "group": "pets",
+        "icon": "scissors",
+        "color": "#F59E0B"
+      },
+      {
+        "key": "pet-insurance",
+        "name": {
+          "en": "Pet insurance",
+          "pt-BR": "Plano de saúde pet",
+          "pt-PT": "Seguro do animal",
+          "es": "Seguro de mascotas",
+          "fr": "Assurance animaux",
+          "de": "Tierversicherung",
+          "it": "Assicurazione animali"
+        },
+        "group": "pets",
+        "icon": "umbrella",
+        "color": "#92400E"
+      }
+    ],
+    "rules": [
+      {
+        "key": "stores",
+        "name": "Pet stores",
+        "conditions_op": "or",
+        "conditions": [
+          {
+            "field": "description",
+            "op": "regex",
+            "value": "\\bPETZ\\b"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "COBASI"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "PETLOVE"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "PET SHOP"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "PETSHOP"
+          },
+          {
+            "field": "description",
+            "op": "regex",
+            "value": "\\bPETCO\\b"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "PETSMART"
+          },
+          {
+            "field": "description",
+            "op": "regex",
+            "value": "\\bCHEWY\\b"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "ZOOPLUS"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "FRESSNAPF"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "MAXI ZOO"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "KIWOKO"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "TIENDANIMAL"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "ARCAPLANET"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "PETS AT HOME"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "PETLAND"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "PETCENTER"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "PET CENTER"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "ZEE.DOG"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "ZEE.NOW"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "CASA DE RACAO"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "RACOES"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "AGROPET"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "PET SUPPLIES PLUS"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "PETSUPPLIESPLUS"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "PET VALU"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "JOLLYES"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "FUTTERHAUS"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "ZOOROYAL"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "ZOO & CO"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "WANIMO"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "ISOLA DEI TESORI"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "ZOOMIGLIORE"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "ANIMALEAR"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "BITIBA"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "MEDPETS"
+          }
+        ],
+        "actions": [
+          {
+            "op": "set_category",
+            "value": "pet-supplies"
+          }
+        ],
+        "priority": 20
+      },
+      {
+        "key": "vets",
+        "name": "Vets",
+        "conditions_op": "or",
+        "conditions": [
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "VETERINAR"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "CLINICA VET"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "HOSPITAL VET"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "TIERARZT"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "VETERINAIRE"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "VETERINARY"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "VET CLINIC"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "ANIMAL HOSPITAL"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "TIERKLINIK"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "CLINIQUE VET"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "BANFIELD"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "VCA ANIMAL"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "AMBULATORIO VET"
+          }
+        ],
+        "actions": [
+          {
+            "op": "set_category",
+            "value": "vet"
+          }
+        ],
+        "priority": 20
+      },
+      {
+        "key": "services",
+        "name": "Grooming, daycare and pet sitting",
+        "conditions_op": "or",
+        "conditions": [
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "BANHO E TOSA"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "BANHO & TOSA"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "PET SITTER"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "DOGHERO"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "DOG HERO"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "ROVER.COM"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "HOSPEDAGEM PET"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "CRECHE CANINA"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "CRECHE PET"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "ADESTRA"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "DOG WALK"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "HUNDESALON"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "HUNDEPENSION"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "TOILETTAGE"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "PELUQUERIA CANINA"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "TOELETTATURA"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "DOG GROOMING"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "PET GROOMING"
+          }
+        ],
+        "actions": [
+          {
+            "op": "set_category",
+            "value": "pet-services"
+          }
+        ],
+        "priority": 20
+      },
+      {
+        "key": "insurance",
+        "name": "Pet insurance and health plans",
+        "conditions_op": "or",
+        "conditions": [
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "SAUDE PET"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "PETLOVE SAUDE"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "HEALTH FOR PET"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "PETPLAN"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "TRUPANION"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "HEALTHY PAWS"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "PETS BEST"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "FIGO PET"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "EMBRACE PET"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "SANTEVET"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "ASSURUP"
+          },
+          {
+            "field": "description",
+            "op": "regex",
+            "value": "\\bAGRIA\\b"
+          }
+        ],
+        "actions": [
+          {
+            "op": "set_category",
+            "value": "pet-insurance"
+          }
+        ],
+        "priority": 19
+      }
+    ]
+  }
+}
