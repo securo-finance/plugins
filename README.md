@@ -24,7 +24,7 @@ The index is rebuilt every 6 hours. A new release appears as an update for works
   "version": "1.0.0",
   "repository": "https://github.com/your-name/streaming",
   "license": "MIT",
-  "min_securo_version": "0.18.0",
+  "min_securo_version": "0.19.0",
   "contributes": {
     "category_groups": [],
     "categories": [{ "key": "streaming", "name": "Streaming", "group": "lifestyle", "icon": "tv" }],

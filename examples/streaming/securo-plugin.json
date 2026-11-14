@@ -8,7 +8,7 @@
   "version": "1.0.0",
   "repository": "https://github.com/your-name/streaming",
   "license": "MIT",
-  "min_securo_version": "0.18.0",
+  "min_securo_version": "0.19.0",
   "contributes": {
     "categories": [
       { "key": "streaming", "name": { "en": "Streaming", "pt-BR": "Streaming" }, "group": "lifestyle", "icon": "tv", "color": "#8B5CF6" }
