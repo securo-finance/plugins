@@ -2,7 +2,7 @@
 
 The index behind the plugin catalog in [Securo](https://github.com/securo-finance/securo).
 
-A plugin is a public GitHub repository with a `securo-plugin.json` at its root. A data plugin brings categories, category groups and rules to a workspace. A plugin with code adds integrations with outside services, run by Securo in an isolated runner. Securo shows a preview of exactly what changes before anything is installed: for a plugin with code, the hosts it reaches and what it may read or change, each with your stated reason.
+A plugin is a public GitHub repository with a `securo-plugin.json` at its root. A data plugin brings categories, category groups and rules to a workspace; a theme plugin brings looks for the library. A plugin with code adds integrations with outside services, run by Securo in an isolated runner. Securo shows a preview of exactly what changes before anything is installed: for a plugin with code, the hosts it reaches and what it may read or change, each with your stated reason.
 
 There's no review step: any repository with the `securo-plugin` topic, a release and a valid manifest is listed. Plugins aren't reviewed by the Securo team, so read the preview.
 
@@ -49,6 +49,29 @@ The index is rebuilt every 6 hours. A new release appears as an update for works
 - Plugins with code add `runtime`, `network` and `api_scopes` (below).
 
 Securo validates the whole manifest again before installing, so the preview is the final word on whether it applies.
+
+## Themes
+
+A plugin can add themes to Securo's library: colors for its design tokens in light and dark, an optional corner radius (0 to 1 rem) and an optional font (`sans`, `mono` or `serif`, from the device's own fonts).
+
+```json
+"contributes": {
+  "themes": [
+    {
+      "key": "matrix",
+      "name": "Matrix",
+      "radius": 0,
+      "font": "mono",
+      "dark": { "background": "#000000", "foreground": "#B6FFB9", "primary": "#00FF41", "primary-foreground": "#001A07" },
+      "light": { "background": "#F3FFF4", "foreground": "#002B0A", "primary": "#007A1F", "primary-foreground": "#FFFFFF" }
+    }
+  ]
+}
+```
+
+- Tokens: `background`, `foreground`, `card`, `primary`, `primary-foreground`, `muted`, `muted-foreground`, `border`, `chart-1` to `chart-12`, `chart-muted`, `chart-income`, `chart-expense`. Each value is a `#RRGGBB` color; anything else is refused.
+- Text has to stay readable: `foreground` and `muted-foreground` on `background` and `card`, and `primary-foreground` on `primary`, need a contrast of 4.5:1 when both are set.
+- No CSS, images or downloaded fonts: a theme is only colors, so nothing leaves the person's server.
 
 ## Plugins with code
 
