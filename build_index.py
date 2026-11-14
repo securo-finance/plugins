@@ -88,6 +88,10 @@ def _locales(manifest: dict) -> list[str]:
     return sorted(found)
 
 
+#: The workspace types a plugin can be meant for; both when the manifest leaves it out.
+WORKSPACE_TYPES = ["personal", "business"]
+
+
 def check_manifest(body: bytes, *, plugin_id: str | None = None, repository: str | None = None) -> dict:
     """The manifest as JSON, if it's one this index can list."""
     if len(body) > MAX_MANIFEST_BYTES:
@@ -116,6 +120,10 @@ def check_manifest(body: bytes, *, plugin_id: str | None = None, repository: str
         raise Invalid("`contributes` must map each kind to a list")
     if not any(contributes.values()):
         raise Invalid("contributes nothing")
+    workspaces = manifest.get("workspaces", WORKSPACE_TYPES)
+    if (not isinstance(workspaces, list) or not workspaces or len(set(workspaces)) != len(workspaces)
+            or not set(workspaces) <= set(WORKSPACE_TYPES)):
+        raise Invalid(f"`workspaces` must list one or both of: {', '.join(WORKSPACE_TYPES)}")
     if plugin_id is not None and manifest["id"] != plugin_id:
         raise Invalid(f"`id` is {manifest['id']}, expected {plugin_id}")
     if repository is not None and manifest["repository"].lower() != repository.lower():
@@ -151,6 +159,7 @@ class Output:
             "license": manifest["license"],
             "min_securo_version": manifest["min_securo_version"],
             "contributes": {kind: len(items) for kind, items in manifest["contributes"].items()},
+            "workspaces": manifest.get("workspaces", WORKSPACE_TYPES),
             "locales": _locales(manifest),
             "topics": topics or [],
             "stars": stars,

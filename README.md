@@ -46,6 +46,7 @@ The index is rebuilt every 6 hours. A new release appears as an update for works
 - Any text can be a string or a map of locales with an `en` entry.
 - `key` identifies an item across versions: keep it stable, since renaming a key replaces the item. A category's `group` and a rule's `set_category` name a key of this plugin or a built-in one (`food`, `groceries`, `transport`, `lifestyle`, ...).
 - Rule conditions use `description`, `payee`, `notes`, `amount`, `type`, `date` or `status`; actions are `set_category`, `set_description`, `append_notes` and `ignore`.
+- `workspaces` is optional: `["personal"]` or `["business"]` limits the plugin to that type of workspace, and leaving it out means both. The catalog shows the limit and offers Install only where the plugin fits. Themes apply to the person, so a theme plugin is for both.
 - Plugins with code add `runtime`, `network` and `api_scopes` (below).
 
 Securo validates the whole manifest again before installing, so the preview is the final word on whether it applies.

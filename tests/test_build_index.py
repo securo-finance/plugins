@@ -32,6 +32,7 @@ class LocalIndex(unittest.TestCase):
         self.assertEqual(entry["id"], "your-name/streaming")
         self.assertEqual(entry["contributes"], {"categories": 1, "rules": 1})
         self.assertEqual(entry["locales"], ["en", "pt-BR"])
+        self.assertEqual(entry["workspaces"], ["personal", "business"])
         for path, digest in ((entry["manifest"], entry["manifest_sha256"]), (entry["readme"], entry["readme_sha256"])):
             self.assertEqual(hashlib.sha256((v1 / path).read_bytes()).hexdigest(), digest)
         self.assertEqual((v1 / entry["manifest"]).read_bytes(), (EXAMPLE / "securo-plugin.json").read_bytes())
@@ -76,9 +77,14 @@ class Manifest(unittest.TestCase):
             build_index.check_manifest(self.manifest(), repository="https://github.com/someone/streaming")
 
     def test_malformed_fields(self):
-        for changes in ({"version": "1.0"}, {"contributes": {"rules": []}}, {"name": {"pt-BR": "x"}}):
+        for changes in ({"version": "1.0"}, {"contributes": {"rules": []}}, {"name": {"pt-BR": "x"}},
+                        {"workspaces": []}, {"workspaces": ["family"]}, {"workspaces": ["business", "business"]}):
             with self.subTest(changes), self.assertRaises(build_index.Invalid):
                 build_index.check_manifest(self.manifest(**changes))
+
+
+    def test_a_plugin_can_be_limited_to_one_workspace_type(self):
+        self.assertEqual(build_index.check_manifest(self.manifest(workspaces=["business"]))["workspaces"], ["business"])
 
 
 class Stars(unittest.TestCase):
