@@ -1,3 +1,107 @@
 {
-  "plugins": []
+  "plugins": [
+    {
+      "id": "securo-finance/plugin-pets",
+      "repository": "https://github.com/securo-finance/plugin-pets",
+      "release": "v1.0.0",
+      "commit": "1ba3956327d0135c799eec388206803d10296ea7",
+      "manifest": "manifests/securo-finance--plugin-pets--1ba3956327d0135c799eec388206803d10296ea7.json",
+      "manifest_sha256": "c8a78d913a939a84f8359b79dfdcb478ce7c74e67b79a3207d288f214240e77b",
+      "name": {
+        "en": "Pets",
+        "pt-BR": "Pets",
+        "pt-PT": "Animais de estimação",
+        "es": "Mascotas",
+        "fr": "Animaux",
+        "de": "Haustiere",
+        "it": "Animali domestici"
+      },
+      "description": {
+        "en": "A Pets group with categories and rules for pet stores, food and vets: Petz, Cobasi, Petlove, Chewy, Zooplus and more.",
+        "pt-BR": "Um grupo Pets com categorias e regras para pet shop, ração e veterinário: Petz, Cobasi, Petlove, Chewy, Zooplus e outros.",
+        "pt-PT": "Um grupo Animais de estimação com categorias e regras para lojas de animais, comida e veterinário: Zooplus, Kiwoko e outros.",
+        "es": "Un grupo Mascotas con categorías y reglas para tiendas de mascotas, comida y veterinario: Kiwoko, Zooplus, Chewy y más.",
+        "fr": "Un groupe Animaux avec des catégories et des règles pour animaleries, nourriture et vétérinaire : Zooplus, Maxi Zoo et plus.",
+        "de": "Eine Gruppe Haustiere mit Kategorien und Regeln für Tierbedarf, Futter und Tierarzt: Fressnapf, Zooplus und mehr.",
+        "it": "Un gruppo Animali domestici con categorie e regole per negozi di animali, cibo e veterinario: Arcaplanet, Zooplus e altro."
+      },
+      "version": "1.0.0",
+      "license": "AGPL-3.0-only",
+      "min_securo_version": "0.19.0",
+      "contributes": {
+        "category_groups": 1,
+        "categories": 2,
+        "rules": 2
+      },
+      "locales": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "pt-BR",
+        "pt-PT"
+      ],
+      "topics": [
+        "securo"
+      ],
+      "stars": 0,
+      "stars_7d": 0,
+      "added_at": "2026-11-14T14:42:57Z",
+      "updated_at": "2026-11-14T14:42:32Z",
+      "readme": "readmes/securo-finance--plugin-pets--1ba3956327d0135c799eec388206803d10296ea7.md",
+      "readme_sha256": "63e34739cdc502387fef6df1f48917dd18b9283e5b5f18f7e1693f78a1645693"
+    },
+    {
+      "id": "securo-finance/plugin-streaming",
+      "repository": "https://github.com/securo-finance/plugin-streaming",
+      "release": "v1.0.0",
+      "commit": "bb72253df7e9ca6a03934f42570b8f1c9684f755",
+      "manifest": "manifests/securo-finance--plugin-streaming--bb72253df7e9ca6a03934f42570b8f1c9684f755.json",
+      "manifest_sha256": "0e429cbdb90c21e9e16b9921d68b51b06ecff45a3796f014192b40eec78ff0d6",
+      "name": {
+        "en": "Streaming & subscriptions",
+        "pt-BR": "Streaming e assinaturas",
+        "pt-PT": "Streaming e subscrições",
+        "es": "Streaming y suscripciones",
+        "fr": "Streaming et abonnements",
+        "de": "Streaming & Abos",
+        "it": "Streaming e abbonamenti"
+      },
+      "description": {
+        "en": "Categories and rules for video, music, and app or cloud subscriptions: Netflix, Spotify, iCloud, ChatGPT and more.",
+        "pt-BR": "Categorias e regras para assinaturas de vídeo, música, apps e nuvem: Netflix, Spotify, iCloud, ChatGPT e outros.",
+        "pt-PT": "Categorias e regras para subscrições de vídeo, música, apps e nuvem: Netflix, Spotify, iCloud, ChatGPT e outros.",
+        "es": "Categorías y reglas para suscripciones de video, música, apps y nube: Netflix, Spotify, iCloud, ChatGPT y más.",
+        "fr": "Catégories et règles pour les abonnements vidéo, musique, applis et cloud : Netflix, Spotify, iCloud, ChatGPT et plus.",
+        "de": "Kategorien und Regeln für Video-, Musik-, App- und Cloud-Abos: Netflix, Spotify, iCloud, ChatGPT und mehr.",
+        "it": "Categorie e regole per abbonamenti video, musica, app e cloud: Netflix, Spotify, iCloud, ChatGPT e altro."
+      },
+      "version": "1.0.0",
+      "license": "AGPL-3.0-only",
+      "min_securo_version": "0.19.0",
+      "contributes": {
+        "categories": 3,
+        "rules": 3
+      },
+      "locales": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "pt-BR",
+        "pt-PT"
+      ],
+      "topics": [
+        "securo"
+      ],
+      "stars": 0,
+      "stars_7d": 0,
+      "added_at": "2026-11-14T14:42:57Z",
+      "updated_at": "2026-11-14T14:42:23Z",
+      "readme": "readmes/securo-finance--plugin-streaming--bb72253df7e9ca6a03934f42570b8f1c9684f755.md",
+      "readme_sha256": "a836476f0b95bd04abcc327304fb6ad1f6fb8b4a3899849bd005439513c764b8"
+    }
+  ]
 }

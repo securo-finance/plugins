@@ -1,0 +1,338 @@
+{
+  "id": "securo-finance/plugin-streaming",
+  "name": {
+    "en": "Streaming & subscriptions",
+    "pt-BR": "Streaming e assinaturas",
+    "pt-PT": "Streaming e subscrições",
+    "es": "Streaming y suscripciones",
+    "fr": "Streaming et abonnements",
+    "de": "Streaming & Abos",
+    "it": "Streaming e abbonamenti"
+  },
+  "description": {
+    "en": "Categories and rules for video, music, and app or cloud subscriptions: Netflix, Spotify, iCloud, ChatGPT and more.",
+    "pt-BR": "Categorias e regras para assinaturas de vídeo, música, apps e nuvem: Netflix, Spotify, iCloud, ChatGPT e outros.",
+    "pt-PT": "Categorias e regras para subscrições de vídeo, música, apps e nuvem: Netflix, Spotify, iCloud, ChatGPT e outros.",
+    "es": "Categorías y reglas para suscripciones de video, música, apps y nube: Netflix, Spotify, iCloud, ChatGPT y más.",
+    "fr": "Catégories et règles pour les abonnements vidéo, musique, applis et cloud : Netflix, Spotify, iCloud, ChatGPT et plus.",
+    "de": "Kategorien und Regeln für Video-, Musik-, App- und Cloud-Abos: Netflix, Spotify, iCloud, ChatGPT und mehr.",
+    "it": "Categorie e regole per abbonamenti video, musica, app e cloud: Netflix, Spotify, iCloud, ChatGPT e altro."
+  },
+  "version": "1.0.0",
+  "repository": "https://github.com/securo-finance/plugin-streaming",
+  "license": "AGPL-3.0-only",
+  "min_securo_version": "0.19.0",
+  "contributes": {
+    "categories": [
+      {
+        "key": "video-streaming",
+        "name": {
+          "en": "Video streaming",
+          "pt-BR": "Streaming de vídeo",
+          "pt-PT": "Streaming de vídeo",
+          "es": "Streaming de video",
+          "fr": "Streaming vidéo",
+          "de": "Video-Streaming",
+          "it": "Streaming video"
+        },
+        "group": "lifestyle",
+        "icon": "tv",
+        "color": "#E11D48"
+      },
+      {
+        "key": "music-streaming",
+        "name": {
+          "en": "Music & podcasts",
+          "pt-BR": "Música e podcasts",
+          "pt-PT": "Música e podcasts",
+          "es": "Música y podcasts",
+          "fr": "Musique et podcasts",
+          "de": "Musik & Podcasts",
+          "it": "Musica e podcast"
+        },
+        "group": "lifestyle",
+        "icon": "music",
+        "color": "#16A34A"
+      },
+      {
+        "key": "apps-cloud",
+        "name": {
+          "en": "Apps & cloud",
+          "pt-BR": "Apps e nuvem",
+          "pt-PT": "Apps e nuvem",
+          "es": "Apps y nube",
+          "fr": "Applis et cloud",
+          "de": "Apps & Cloud",
+          "it": "App e cloud"
+        },
+        "group": "lifestyle",
+        "icon": "cloud",
+        "color": "#2563EB"
+      }
+    ],
+    "rules": [
+      {
+        "key": "video",
+        "name": "Video streaming services",
+        "conditions_op": "or",
+        "conditions": [
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "NETFLIX"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "DISNEY PLUS"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "DISNEYPLUS"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "DISNEY+"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "HBO MAX"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "HBOMAX"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "PRIME VIDEO"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "PRIMEVIDEO"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "GLOBOPLAY"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "PARAMOUNT+"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "PARAMOUNTPLUS"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "APPLE TV"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "CRUNCHYROLL"
+          },
+          {
+            "field": "description",
+            "op": "regex",
+            "value": "\\bMUBI\\b"
+          },
+          {
+            "field": "description",
+            "op": "regex",
+            "value": "\\bDAZN\\b"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "STAR+"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "PLUTO TV"
+          }
+        ],
+        "actions": [
+          {
+            "op": "set_category",
+            "value": "video-streaming"
+          }
+        ],
+        "priority": 20
+      },
+      {
+        "key": "music",
+        "name": "Music and podcast services",
+        "conditions_op": "or",
+        "conditions": [
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "SPOTIFY"
+          },
+          {
+            "field": "description",
+            "op": "regex",
+            "value": "\\bDEEZER\\b"
+          },
+          {
+            "field": "description",
+            "op": "regex",
+            "value": "\\bTIDAL\\b"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "APPLE MUSIC"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "YOUTUBE MUSIC"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "YOUTUBE PREMIUM"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "YOUTUBEPREMIUM"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "AMAZON MUSIC"
+          },
+          {
+            "field": "description",
+            "op": "regex",
+            "value": "\\bAUDIBLE\\b"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "SOUNDCLOUD"
+          }
+        ],
+        "actions": [
+          {
+            "op": "set_category",
+            "value": "music-streaming"
+          }
+        ],
+        "priority": 20
+      },
+      {
+        "key": "apps",
+        "name": "App and cloud subscriptions",
+        "conditions_op": "or",
+        "conditions": [
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "ICLOUD"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "GOOGLE ONE"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "GOOGLE STORAGE"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "DROPBOX"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "MICROSOFT 365"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "MSFT 365"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "OFFICE 365"
+          },
+          {
+            "field": "description",
+            "op": "regex",
+            "value": "\\bADOBE\\b"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "OPENAI"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "CHATGPT"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "ANTHROPIC"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "CLAUDE.AI"
+          },
+          {
+            "field": "description",
+            "op": "regex",
+            "value": "\\bNOTION\\b"
+          },
+          {
+            "field": "description",
+            "op": "regex",
+            "value": "\\bCANVA\\b"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "1PASSWORD"
+          },
+          {
+            "field": "description",
+            "op": "contains",
+            "value": "BITWARDEN"
+          },
+          {
+            "field": "description",
+            "op": "regex",
+            "value": "\\bPROTON\\b"
+          }
+        ],
+        "actions": [
+          {
+            "op": "set_category",
+            "value": "apps-cloud"
+          }
+        ],
+        "priority": 20
+      }
+    ]
+  }
+}
