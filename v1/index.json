@@ -3,21 +3,21 @@
     {
       "id": "fredson-sumi/securo-ibkr",
       "repository": "https://github.com/fredson-sumi/securo-ibkr",
-      "release": "v0.1.0",
-      "commit": "fbe203c3753da95697d28aabb52e0d3b8d6000c7",
-      "manifest": "manifests/fredson-sumi--securo-ibkr--fbe203c3753da95697d28aabb52e0d3b8d6000c7.json",
-      "manifest_sha256": "3aa37018c564e037b447519a3dbab14e4d205d282ae85fb2442b27065cbc4f12",
+      "release": "v0.3.0",
+      "commit": "9134d73197ff184bc8ffeb3cec5119e737d2b493",
+      "manifest": "manifests/fredson-sumi--securo-ibkr--9134d73197ff184bc8ffeb3cec5119e737d2b493.json",
+      "manifest_sha256": "f72436f42215790af411ed4a534ba7e6ec394114d8531943edb3d8fa495fb9b1",
       "name": {
         "en": "Interactive Brokers",
         "pt-BR": "Interactive Brokers"
       },
       "description": {
-        "en": "Imports cash balances, cash activity, open positions and trades from Interactive Brokers through an Activity Flex Query.",
-        "pt-BR": "Importa saldos em caixa, movimentações, posições abertas e operações da Interactive Brokers por meio de uma Activity Flex Query."
+        "en": "Syncs Interactive Brokers as a connected bank through an Activity Flex Query: cash balances, cash activity, positions and trades.",
+        "pt-BR": "Sincroniza a Interactive Brokers como um banco conectado por meio de uma Activity Flex Query: saldos em caixa, movimentações, posições e operações."
       },
-      "version": "0.1.0",
+      "version": "0.3.0",
       "license": "MIT",
-      "min_securo_version": "0.19.0",
+      "min_securo_version": "0.20.0",
       "contributes": {
         "integrations": 1
       },
@@ -34,14 +34,49 @@
         "interactive-brokers",
         "securo"
       ],
-      "stars": 2,
+      "stars": 3,
       "stars_7d": 0,
       "added_at": "2026-11-16T22:17:36Z",
-      "updated_at": "2026-11-16T21:15:54Z",
-      "readme": "readmes/fredson-sumi--securo-ibkr--fbe203c3753da95697d28aabb52e0d3b8d6000c7.md",
-      "readme_sha256": "d76efe72b3ae51e50650522843f166ee351be5b5fa0bc8d4db99e17264e9db2d",
-      "archive": "archives/fredson-sumi--securo-ibkr--fbe203c3753da95697d28aabb52e0d3b8d6000c7.tar.gz",
-      "archive_sha256": "7bcf0d6ae244ff8d4f37b4253ab223c3dd2dc377bd1ca1efc8398291093b2e40"
+      "updated_at": "2026-11-18T19:28:48Z",
+      "readme": "readmes/fredson-sumi--securo-ibkr--9134d73197ff184bc8ffeb3cec5119e737d2b493.md",
+      "readme_sha256": "12a818e376f2297cad64a32556a076b6ebebce0f344745a9d0b650494801350c",
+      "archive": "archives/fredson-sumi--securo-ibkr--9134d73197ff184bc8ffeb3cec5119e737d2b493.tar.gz",
+      "archive_sha256": "65d5b17ae441e7326a9a3ec3f75b764b01892aecf28a732584112fc24aebca55"
+    },
+    {
+      "id": "jschaufuss/securo-ing-fints",
+      "repository": "https://github.com/jschaufuss/securo-ing-fints",
+      "release": "v1.0.0",
+      "commit": "fa4191d472b474c091f8b9a0a6bad1fad1092ad0",
+      "manifest": "manifests/jschaufuss--securo-ing-fints--fa4191d472b474c091f8b9a0a6bad1fad1092ad0.json",
+      "manifest_sha256": "e8f96654513c8a5de149996471e137de7fb230d13714092085e9fcfb794407e3",
+      "name": {
+        "en": "ING Germany (FinTS)"
+      },
+      "description": {
+        "en": "Read-only ING Germany FinTS bank sync (checking, savings; optional experimental holdings)."
+      },
+      "version": "1.0.0",
+      "license": "MIT",
+      "min_securo_version": "0.20.0",
+      "contributes": {
+        "integrations": 1
+      },
+      "workspaces": [
+        "personal"
+      ],
+      "locales": [
+        "en"
+      ],
+      "topics": [],
+      "stars": 0,
+      "stars_7d": 0,
+      "added_at": "2026-11-18T20:40:34Z",
+      "updated_at": "2026-11-18T19:38:47Z",
+      "readme": "readmes/jschaufuss--securo-ing-fints--fa4191d472b474c091f8b9a0a6bad1fad1092ad0.md",
+      "readme_sha256": "afd8a2292befe371d86e273b320038f075f932a97beb267bb5ca0d79fca1734b",
+      "archive": "archives/jschaufuss--securo-ing-fints--fa4191d472b474c091f8b9a0a6bad1fad1092ad0.tar.gz",
+      "archive_sha256": "fae967a61c8b32401a8bd9bc2f9a7e441ceb712eb00106e7b29e3f3c009ca2b4"
     },
     {
       "id": "securo-finance/plugin-neon-themes",

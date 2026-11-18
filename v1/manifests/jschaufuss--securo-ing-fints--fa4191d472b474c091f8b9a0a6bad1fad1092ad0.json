@@ -1,0 +1,99 @@
+{
+  "id": "jschaufuss/securo-ing-fints",
+  "name": {
+    "en": "ING Germany (FinTS)"
+  },
+  "description": {
+    "en": "Read-only ING Germany FinTS bank sync (checking, savings; optional experimental holdings)."
+  },
+  "version": "1.0.0",
+  "repository": "https://github.com/jschaufuss/securo-ing-fints",
+  "license": "MIT",
+  "min_securo_version": "0.20.0",
+  "workspaces": [
+    "personal"
+  ],
+  "runtime": {
+    "entrypoint": "ing_bank:plugin",
+    "lockfile": "requirements.txt"
+  },
+  "network": [
+    {
+      "host": "fints.ing.de",
+      "purpose": {
+        "en": "Read ING account balances, statements and optional depot positions via FinTS."
+      }
+    }
+  ],
+  "contributes": {
+    "integrations": [
+      {
+        "key": "ing",
+        "name": {
+          "en": "ING Germany FinTS"
+        },
+        "description": {
+          "en": "Uses your registered FinTS product ID. No payments are initiated."
+        },
+        "auth": "credentials",
+        "fields": [
+          {
+            "key": "login",
+            "label": {
+              "en": "ING FinTS user ID"
+            },
+            "secret": true
+          },
+          {
+            "key": "pin",
+            "label": {
+              "en": "ING online banking password or PIN"
+            },
+            "secret": true
+          },
+          {
+            "key": "product_id",
+            "label": {
+              "en": "Registered FinTS product ID"
+            }
+          },
+          {
+            "key": "account_ibans",
+            "label": {
+              "en": "Account IBANs to sync (comma-separated; empty = all)"
+            },
+            "secret": true,
+            "required": false
+          },
+          {
+            "key": "balance_mode",
+            "label": {
+              "en": "Balance mode: booked or pending (default: booked)"
+            },
+            "required": false
+          },
+          {
+            "key": "history_days",
+            "label": {
+              "en": "Transaction history days (default 85; max 89)"
+            },
+            "required": false
+          },
+          {
+            "key": "holdings_enabled",
+            "label": {
+              "en": "Experimental depot fetch (yes/no)"
+            },
+            "required": false
+          }
+        ],
+        "sync_minutes": 360,
+        "provides": [
+          "accounts",
+          "transactions",
+          "holdings"
+        ]
+      }
+    ]
+  }
+}

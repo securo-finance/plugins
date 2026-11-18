@@ -2,13 +2,13 @@
   "id": "fredson-sumi/securo-ibkr",
   "name": { "en": "Interactive Brokers", "pt-BR": "Interactive Brokers" },
   "description": {
-    "en": "Imports cash balances, cash activity, open positions and trades from Interactive Brokers through an Activity Flex Query.",
-    "pt-BR": "Importa saldos em caixa, movimentações, posições abertas e operações da Interactive Brokers por meio de uma Activity Flex Query."
+    "en": "Syncs Interactive Brokers as a connected bank through an Activity Flex Query: cash balances, cash activity, positions and trades.",
+    "pt-BR": "Sincroniza a Interactive Brokers como um banco conectado por meio de uma Activity Flex Query: saldos em caixa, movimentações, posições e operações."
   },
-  "version": "0.1.0",
+  "version": "0.3.0",
   "repository": "https://github.com/fredson-sumi/securo-ibkr",
   "license": "MIT",
-  "min_securo_version": "0.19.0",
+  "min_securo_version": "0.20.0",
   "runtime": { "entrypoint": "securo_ibkr.plugin:plugin" },
   "network": [
     {
@@ -26,29 +26,6 @@
       }
     }
   ],
-  "api_scopes": [
-    {
-      "scope": "accounts:write",
-      "purpose": {
-        "en": "Creates one investment account per cash currency and keeps its balance current.",
-        "pt-BR": "Cria uma conta de investimento por moeda em caixa e mantém o saldo atualizado."
-      }
-    },
-    {
-      "scope": "transactions:write",
-      "purpose": {
-        "en": "Adds deposits, withdrawals, dividends, interest and fees from the statement.",
-        "pt-BR": "Adiciona depósitos, saques, dividendos, juros e taxas do extrato."
-      }
-    },
-    {
-      "scope": "assets:write",
-      "purpose": {
-        "en": "Keeps your open positions, their values and their trades up to date.",
-        "pt-BR": "Mantém suas posições abertas, seus valores e suas operações atualizados."
-      }
-    }
-  ],
   "contributes": {
     "integrations": [
       {
@@ -63,8 +40,10 @@
           { "key": "token", "label": { "en": "Flex Web Service token", "pt-BR": "Token do Flex Web Service" }, "secret": true },
           { "key": "query_id", "label": { "en": "Activity Flex Query ID", "pt-BR": "ID da Activity Flex Query" } }
         ],
-        "sync_minutes": 60
+        "sync_minutes": 60,
+        "provides": ["accounts", "transactions", "holdings", "trades"]
       }
     ]
-  }
+  },
+  "logos": { "ibkr": "logos/ibkr.png" }
 }
