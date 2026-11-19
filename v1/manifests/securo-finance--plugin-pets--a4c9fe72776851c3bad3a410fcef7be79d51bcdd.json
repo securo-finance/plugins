@@ -18,7 +18,7 @@
     "de": "Eine Gruppe Haustiere mit Kategorien und Regeln für Tierbedarf und Futter, Tierarzt, Pflege und Tierversicherung: Fressnapf, Futterhaus, Zooplus und mehr.",
     "it": "Un gruppo Animali domestici con categorie e regole per negozi e cibo, veterinario, toelettatura e assicurazione: Arcaplanet, Isola dei Tesori, Zooplus e altro."
   },
-  "version": "1.1.0",
+  "version": "1.1.1",
   "repository": "https://github.com/securo-finance/plugin-pets",
   "license": "AGPL-3.0-only",
   "min_securo_version": "0.19.0",

@@ -127,10 +127,10 @@
     {
       "id": "securo-finance/plugin-neon-themes",
       "repository": "https://github.com/securo-finance/plugin-neon-themes",
-      "release": "v1.0.0",
-      "commit": "a507695a967767dc2886201fc94314e7fb51b730",
-      "manifest": "manifests/securo-finance--plugin-neon-themes--a507695a967767dc2886201fc94314e7fb51b730.json",
-      "manifest_sha256": "1233bcd5e4f57f6f5c0ee06bdeae3d7c3224f77d21f1b8ca826c858f5f9decd1",
+      "release": "v1.0.1",
+      "commit": "a5bedea2181c908f17052e0773f86a994c6f765f",
+      "manifest": "manifests/securo-finance--plugin-neon-themes--a5bedea2181c908f17052e0773f86a994c6f765f.json",
+      "manifest_sha256": "d377a5483037339b539622fdafc56ed6f3cfe62d65b0807fb37617e7fe04a565",
       "name": {
         "en": "Neon themes",
         "pt-BR": "Temas neon",
@@ -149,7 +149,7 @@
         "de": "Vier kräftige Looks für Securo: Synthwave, Matrix, Bernstein-CRT und Cyberpunk, mit Neonfarben, Monospace-Schrift und eckigen Kanten.",
         "it": "Quattro stili audaci per Securo: Synthwave, Matrix, CRT ambra e Cyberpunk, con colori neon, testo monospaziato e angoli netti."
       },
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "AGPL-3.0-only",
       "min_securo_version": "0.19.0",
       "contributes": {
@@ -175,17 +175,18 @@
       "stars": 2,
       "stars_7d": 0,
       "added_at": "2026-11-14T15:35:57Z",
-      "updated_at": "2026-11-14T15:34:25Z",
-      "readme": "readmes/securo-finance--plugin-neon-themes--a507695a967767dc2886201fc94314e7fb51b730.md",
-      "readme_sha256": "2bc23ae7ce69834143f0614c5e6fe9ea0b55f42b572da0ab2e88291888ca5609"
+      "updated_at": "2026-11-19T21:01:48Z",
+      "readme": "readmes/securo-finance--plugin-neon-themes--a5bedea2181c908f17052e0773f86a994c6f765f.md",
+      "readme_sha256": "2bc23ae7ce69834143f0614c5e6fe9ea0b55f42b572da0ab2e88291888ca5609",
+      "icon": "icons/e89ff503b0cd041cc3fc2a2b9f11c124e3b164a3351330b092c0932192b88d5e.png"
     },
     {
       "id": "securo-finance/plugin-pets",
       "repository": "https://github.com/securo-finance/plugin-pets",
-      "release": "v1.1.0",
-      "commit": "2623078f9534835fea5c327efbfed95b478625d6",
-      "manifest": "manifests/securo-finance--plugin-pets--2623078f9534835fea5c327efbfed95b478625d6.json",
-      "manifest_sha256": "0071eeb2f3ffb9856e569837e22ea297975435c08a8cc2e9431da0abb01500c8",
+      "release": "v1.1.1",
+      "commit": "a4c9fe72776851c3bad3a410fcef7be79d51bcdd",
+      "manifest": "manifests/securo-finance--plugin-pets--a4c9fe72776851c3bad3a410fcef7be79d51bcdd.json",
+      "manifest_sha256": "83f78faebc6708709620ea15ea9da224079ec4a14f4ef539a23f73d15072705c",
       "name": {
         "en": "Pets",
         "pt-BR": "Pets",
@@ -204,7 +205,7 @@
         "de": "Eine Gruppe Haustiere mit Kategorien und Regeln für Tierbedarf und Futter, Tierarzt, Pflege und Tierversicherung: Fressnapf, Futterhaus, Zooplus und mehr.",
         "it": "Un gruppo Animali domestici con categorie e regole per negozi e cibo, veterinario, toelettatura e assicurazione: Arcaplanet, Isola dei Tesori, Zooplus e altro."
       },
-      "version": "1.1.0",
+      "version": "1.1.1",
       "license": "AGPL-3.0-only",
       "min_securo_version": "0.19.0",
       "contributes": {
@@ -231,17 +232,18 @@
       "stars": 0,
       "stars_7d": 0,
       "added_at": "2026-11-14T14:42:57Z",
-      "updated_at": "2026-11-14T15:52:44Z",
-      "readme": "readmes/securo-finance--plugin-pets--2623078f9534835fea5c327efbfed95b478625d6.md",
-      "readme_sha256": "1907f953b8dc91920e42fdb0f1a4b8fcb6e0bd02d71589c7be1c053d1f448c65"
+      "updated_at": "2026-11-19T21:01:32Z",
+      "readme": "readmes/securo-finance--plugin-pets--a4c9fe72776851c3bad3a410fcef7be79d51bcdd.md",
+      "readme_sha256": "1907f953b8dc91920e42fdb0f1a4b8fcb6e0bd02d71589c7be1c053d1f448c65",
+      "icon": "icons/dac09c39419cb0d36503fc6fea3c9a045cad348a1bb568eb63fe14725c7c4a81.png"
     },
     {
       "id": "securo-finance/plugin-streaming",
       "repository": "https://github.com/securo-finance/plugin-streaming",
-      "release": "v1.1.0",
-      "commit": "c7b936265f8df76b082b4c74bb3f8ef6e929281c",
-      "manifest": "manifests/securo-finance--plugin-streaming--c7b936265f8df76b082b4c74bb3f8ef6e929281c.json",
-      "manifest_sha256": "aa641ca8be16ab078e1bc288e5ae4ca0fea78e6bb6118cef91be70f0cbdefeed",
+      "release": "v1.1.1",
+      "commit": "cc7f15a3366512b4d2c984e377333496d7f7ff3f",
+      "manifest": "manifests/securo-finance--plugin-streaming--cc7f15a3366512b4d2c984e377333496d7f7ff3f.json",
+      "manifest_sha256": "7868b9d16582fb6909943585c2b6695c004b7cbdcb878197b138ccd1c8293a6e",
       "name": {
         "en": "Streaming & subscriptions",
         "pt-BR": "Streaming e assinaturas",
@@ -260,7 +262,7 @@
         "de": "Kategorien und Regeln für Video-, Musik-, Spiele-, Nachrichten-, App- und Cloud-Abos: Netflix, Spotify, Game Pass, iCloud, ChatGPT und mehr.",
         "it": "Categorie e regole per abbonamenti video, musica, giochi, notizie, app e cloud: Netflix, Spotify, Game Pass, iCloud, ChatGPT e altro."
       },
-      "version": "1.1.0",
+      "version": "1.1.1",
       "license": "AGPL-3.0-only",
       "min_securo_version": "0.19.0",
       "contributes": {
@@ -286,9 +288,10 @@
       "stars": 0,
       "stars_7d": 0,
       "added_at": "2026-11-14T14:42:57Z",
-      "updated_at": "2026-11-14T15:52:47Z",
-      "readme": "readmes/securo-finance--plugin-streaming--c7b936265f8df76b082b4c74bb3f8ef6e929281c.md",
-      "readme_sha256": "f49e4cf55097d2c270e406d7fe1630532e1b375b61e1cbfc52791c5db3ce7e09"
+      "updated_at": "2026-11-19T21:01:40Z",
+      "readme": "readmes/securo-finance--plugin-streaming--cc7f15a3366512b4d2c984e377333496d7f7ff3f.md",
+      "readme_sha256": "f49e4cf55097d2c270e406d7fe1630532e1b375b61e1cbfc52791c5db3ce7e09",
+      "icon": "icons/8c4c56048b01302c647f1e7512a559f864ab1ba6ceca935f2a85092060de02a1.png"
     }
   ]
 }
