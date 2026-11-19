@@ -1,0 +1,50 @@
+{
+  "id": "fredson-sumi/securo-wise",
+  "name": { "en": "Wise", "pt-BR": "Wise" },
+  "description": {
+    "en": "Syncs Wise as a connected bank with a read-only API token: every currency balance of your personal and business profiles, and their activity.",
+    "pt-BR": "Sincroniza a Wise como um banco conectado com um token de API somente leitura: cada saldo em moeda dos seus perfis pessoal e empresarial, e suas movimentações."
+  },
+  "version": "0.1.0",
+  "repository": "https://github.com/fredson-sumi/securo-wise",
+  "license": "MIT",
+  "min_securo_version": "0.20.0",
+  "runtime": { "entrypoint": "securo_wise.plugin:plugin" },
+  "network": [
+    {
+      "host": "api.wise.com",
+      "purpose": {
+        "en": "Reads your Wise profiles, balances and activity with your read-only API token.",
+        "pt-BR": "Lê seus perfis, saldos e movimentações da Wise com seu token de API somente leitura."
+      }
+    }
+  ],
+  "contributes": {
+    "integrations": [
+      {
+        "key": "token",
+        "name": { "en": "Wise API token", "pt-BR": "Token de API da Wise" },
+        "description": {
+          "en": "Use a read-only API token from Wise (Settings → Integrations and tools → API tokens). Creating one needs a Wise business account; it also reads your personal profile.",
+          "pt-BR": "Use um token de API somente leitura da Wise (Configurações → Integrações e ferramentas → Tokens de API). Criar um exige uma conta empresarial da Wise; ele também lê seu perfil pessoal."
+        },
+        "auth": "credentials",
+        "fields": [
+          { "key": "token", "label": { "en": "Read-only API token", "pt-BR": "Token de API somente leitura" }, "secret": true }
+        ],
+        "sync_minutes": 60,
+        "provides": ["accounts", "transactions"]
+      }
+    ],
+    "rules": [
+      {
+        "key": "wise-own-balances",
+        "name": "Wise: money between your own balances is a transfer",
+        "conditions_op": "and",
+        "conditions": [{ "field": "description", "op": "starts_with", "value": "Wise: " }],
+        "actions": [{ "op": "set_category", "value": "transfers" }]
+      }
+    ]
+  },
+  "logos": { "wise": "logos/wise.png" }
+}
