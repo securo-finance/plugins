@@ -14,6 +14,8 @@ There's no review step: any repository with the `securo-plugin` topic, a release
 
 The index is rebuilt every 6 hours. A new release appears as an update for workspaces that have the plugin installed.
 
+To show your own icon in the catalog, add `icon.png` or `icon.webp` at the root of the repository: a PNG or WebP of at most 64 KB (a square image of 128 to 512 px looks best). The index copies it under its sha256 and Securo serves that copy itself, so showing it never sends anyone's browser to GitHub. Without one, or with one that is too large or isn't a PNG or WebP, the plugin is listed with a generated badge. Use a company's logo only if you have the right to: a plugin that misuses a mark can be revoked.
+
 ## The manifest
 
 ```json
@@ -100,7 +102,7 @@ When Securo runs in Docker, use `http://host.docker.internal:8787/v1/index.json`
 
 ## The index format
 
-`v1/index.json` lists every plugin with its pinned commit, the sha256 of the copied manifest, README and, for plugins with code, source archive, and what the catalog shows (name, description, counts per kind, locales, stars, dates). Securo fetches the index only when someone opens the catalog, reads manifests and READMEs only from the index's own host and refuses any copy whose sha256 doesn't match. No instance talks to GitHub, and nothing is counted: popularity is GitHub stars.
+`v1/index.json` lists every plugin with its pinned commit, the sha256 of the copied manifest, README and, for plugins with code, source archive, its icon's copy if it has one (named by the icon's own sha256), and what the catalog shows (name, description, counts per kind, locales, stars, dates). Securo fetches the index only when someone opens the catalog, reads manifests, READMEs and icons only from the index's own host and refuses any copy whose sha256 doesn't match. No instance talks to GitHub, and nothing is counted: popularity is GitHub stars.
 
 You can host a mirror or your own index anywhere that serves static files and point `PLUGINS_INDEX_URL` at it.
 

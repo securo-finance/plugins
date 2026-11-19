@@ -6,9 +6,9 @@ Two modes, one output:
     build_index.py github --out site       # every repository with the `securo-plugin` topic
     build_index.py local PATH... --out site  # plugin folders on disk, to test your own
 
-The output is `site/v1/index.json` plus a copy of each plugin's manifest and
-README and, for plugins with code, of its source at the pinned commit, each
-named in the index with its sha256. Serve `site/` with any static
+The output is `site/v1/index.json` plus a copy of each plugin's manifest,
+README and icon and, for plugins with code, of its source at the pinned
+commit, each named in the index with its sha256. Serve `site/` with any static
 file server and point `PLUGINS_INDEX_URL` at `.../v1/index.json`.
 
 Only the standard library is used, so authors can run this as is (Python 3.11+).
@@ -35,7 +35,10 @@ MANIFEST_FILE = "securo-plugin.json"
 MAX_MANIFEST_BYTES = 2 << 20
 MAX_README_BYTES = 256 << 10
 MAX_ARCHIVE_BYTES = 20 << 20
+MAX_ICON_BYTES = 64 << 10
 README_NAMES = ("README.md", "readme.md", "Readme.md")
+#: A plugin's icon, at the root of its repository like its README.
+ICON_NAMES = ("icon.png", "icon.webp")
 
 # The same patterns Securo checks; Securo validates the whole manifest again
 # before anything is installed, so these only keep obviously broken entries out.
@@ -48,6 +51,10 @@ CODE_FIELDS = ("runtime", "network", "api_scopes")
 
 class Invalid(Exception):
     """A plugin that can't be listed, and why."""
+
+
+class BadIcon(Exception):
+    """An icon that can't be listed: the plugin still is, with Securo's generated badge."""
 
 
 def now() -> datetime:
@@ -131,6 +138,17 @@ def check_manifest(body: bytes, *, plugin_id: str | None = None, repository: str
     return manifest
 
 
+def check_icon(body: bytes) -> str:
+    """The icon's extension, from the file's own signature, if it's one Securo serves."""
+    if len(body) > MAX_ICON_BYTES:
+        raise BadIcon(f"larger than {MAX_ICON_BYTES // 1024} KB")
+    if body.startswith(b"\x89PNG\r\n\x1a\n"):
+        return "png"
+    if len(body) >= 12 and body[:4] == b"RIFF" and body[8:12] == b"WEBP":
+        return "webp"
+    raise BadIcon("not a PNG or WebP image")
+
+
 class Output:
     """Writes `v1/` and collects its entries."""
 
@@ -139,10 +157,11 @@ class Output:
         (self.v1 / "manifests").mkdir(parents=True, exist_ok=True)
         (self.v1 / "readmes").mkdir(parents=True, exist_ok=True)
         (self.v1 / "archives").mkdir(parents=True, exist_ok=True)
+        (self.v1 / "icons").mkdir(parents=True, exist_ok=True)
         self.entries: list[dict] = []
 
     def add(self, manifest: dict, manifest_body: bytes, readme: bytes | None, *, commit: str, release: str,
-            archive: bytes | None = None, stars: int = 0, stars_7d: int = 0, topics: list[str] | None = None,
+            archive: bytes | None = None, icon: bytes | None = None, stars: int = 0, stars_7d: int = 0, topics: list[str] | None = None,
             added_at: datetime | None = None, updated_at: datetime | None = None) -> dict:
         stem = f"{manifest['id'].replace('/', '--')}--{commit}"
         (self.v1 / "manifests" / f"{stem}.json").write_bytes(manifest_body)
@@ -170,6 +189,17 @@ class Output:
         if readme is not None and len(readme) <= MAX_README_BYTES:
             (self.v1 / "readmes" / f"{stem}.md").write_bytes(readme)
             entry |= {"readme": f"readmes/{stem}.md", "readme_sha256": sha256(readme)}
+        if icon is not None:
+            try:
+                extension = check_icon(icon)
+            except BadIcon as exc:
+                print(f"! {manifest['id']}: icon left out ({exc})", file=sys.stderr)
+            else:
+                # Named by its checksum: Securo serves this copy itself, asked for by that name
+                # alone, and an icon that doesn't change keeps its address across releases.
+                digest = sha256(icon)
+                (self.v1 / "icons" / f"{digest}.{extension}").write_bytes(icon)
+                entry |= {"icon": f"icons/{digest}.{extension}"}  # the name is its checksum
         if "runtime" in manifest:
             # Securo installs code only from this copy, checked against this sha256.
             if archive is None:
@@ -224,6 +254,15 @@ def _archive_folder(folder: Path) -> bytes:
     return buffer.getvalue()
 
 
+def _read_icon(folder: Path) -> bytes | None:
+    """The folder's icon, read up to one byte past the limit (so a larger one is told apart)."""
+    path = next((folder / n for n in ICON_NAMES if (folder / n).is_file() and not (folder / n).is_symlink()), None)
+    if path is None:
+        return None
+    with path.open("rb") as file:
+        return file.read(MAX_ICON_BYTES + 1)
+
+
 def build_local(folders: list[Path], out: Output) -> int:
     failed = 0
     for folder in folders:
@@ -235,11 +274,12 @@ def build_local(folders: list[Path], out: Output) -> int:
             failed += 1
             continue
         readme = next((folder / n for n in README_NAMES if (folder / n).exists()), None)
+        icon = _read_icon(folder)
         stamp = now()
         archive = _archive_folder(folder) if "runtime" in manifest else None
         try:
             out.add(manifest, body, readme.read_bytes() if readme else None, commit=_git_commit(folder),
-                    release=f"v{manifest['version']}", archive=archive, added_at=stamp, updated_at=stamp)
+                    release=f"v{manifest['version']}", archive=archive, icon=icon, added_at=stamp, updated_at=stamp)
         except Invalid as exc:
             print(f"✗ {folder}: {exc}", file=sys.stderr)
             failed += 1
@@ -291,6 +331,22 @@ def stars_gained(history: list[list], stars: int, today: datetime) -> int:
     return max(stars - old[-1], 0) if old else 0
 
 
+def _github_icon(gh: GitHub, full: str, commit: str) -> bytes | None:
+    """The repository's icon at that commit: the first of ICON_NAMES it has, as in a local folder."""
+    for name in ICON_NAMES:
+        try:
+            return gh.get(f"https://raw.githubusercontent.com/{full}/{commit}/{name}", accept="*/*",
+                          limit=MAX_ICON_BYTES)
+        except urllib.error.HTTPError as exc:
+            if exc.code == 404:
+                continue
+            print(f"! {full}: {name} left out ({exc})", file=sys.stderr)
+        except Invalid as exc:  # too large
+            print(f"! {full}: {name} left out ({exc})", file=sys.stderr)
+        return None
+    return None
+
+
 def build_github(gh: GitHub, out: Output, state: dict) -> tuple[int, dict]:
     """Lists every tagged repository at the commit of its latest release."""
     today, failed, seen = now(), 0, {}
@@ -311,6 +367,7 @@ def build_github(gh: GitHub, out: Output, state: dict) -> tuple[int, dict]:
                 readme = gh.get(f"/repos/{full}/readme?ref={commit}", accept="application/vnd.github.raw")
             except (urllib.error.HTTPError, Invalid):
                 readme = None
+            icon = _github_icon(gh, full, commit)
             archive = None
             if "runtime" in manifest:
                 archive = gh.get(f"https://codeload.github.com/{full}/tar.gz/{commit}", accept="application/gzip",
@@ -319,7 +376,7 @@ def build_github(gh: GitHub, out: Output, state: dict) -> tuple[int, dict]:
             added_at = _parse_time(known.get("added_at")) or today
             history = [h for h in known.get("stars", []) if _parse_time(h[0]) > today - timedelta(days=30)]
             stars = repo["stargazers_count"]
-            out.add(manifest, body, readme, commit=commit, release=tag, archive=archive, stars=stars,
+            out.add(manifest, body, readme, commit=commit, release=tag, archive=archive, icon=icon, stars=stars,
                     stars_7d=stars_gained(history, stars, today),
                     topics=sorted(t for t in repo.get("topics", []) if t != TOPIC),
                     added_at=added_at, updated_at=_parse_time(release.get("published_at")) or today)
