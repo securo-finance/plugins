@@ -125,6 +125,43 @@
       "archive_sha256": "fae967a61c8b32401a8bd9bc2f9a7e441ceb712eb00106e7b29e3f3c009ca2b4"
     },
     {
+      "id": "marceltov/securo-trade-republic",
+      "repository": "https://github.com/marceltov/securo-trade-republic",
+      "release": "v0.1.0",
+      "commit": "c43c9e2d2f6c44ff7739e36bec2bc165665711b9",
+      "manifest": "manifests/marceltov--securo-trade-republic--c43c9e2d2f6c44ff7739e36bec2bc165665711b9.json",
+      "manifest_sha256": "f613c45bb578d14f133d25effffdccf538ec1030e0b5b235444b3b2fedd07878",
+      "name": {
+        "en": "Trade Republic"
+      },
+      "description": {
+        "en": "Read-only Trade Republic sync: cash account with readable transactions (booked and pending) and depot positions. Syncs only when you press Sync."
+      },
+      "version": "0.1.0",
+      "license": "MIT",
+      "min_securo_version": "0.20.0",
+      "contributes": {
+        "integrations": 1
+      },
+      "workspaces": [
+        "personal"
+      ],
+      "locales": [
+        "en"
+      ],
+      "topics": [
+        "trade-republic"
+      ],
+      "stars": 0,
+      "stars_7d": 0,
+      "added_at": "2026-11-20T20:30:31Z",
+      "updated_at": "2026-11-20T19:52:22Z",
+      "readme": "readmes/marceltov--securo-trade-republic--c43c9e2d2f6c44ff7739e36bec2bc165665711b9.md",
+      "readme_sha256": "0abf9f2e3f84d846715b1095f9c499d501e0afeff651f2fa9cd5daf7306145b0",
+      "archive": "archives/marceltov--securo-trade-republic--c43c9e2d2f6c44ff7739e36bec2bc165665711b9.tar.gz",
+      "archive_sha256": "ee91567e2f26f957e838dd58169e2eb29963172a5c0c8ff9a83e06a84beb050a"
+    },
+    {
       "id": "securo-finance/plugin-neon-themes",
       "repository": "https://github.com/securo-finance/plugin-neon-themes",
       "release": "v1.0.1",

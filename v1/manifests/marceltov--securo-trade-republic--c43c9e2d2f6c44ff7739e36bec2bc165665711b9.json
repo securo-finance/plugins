@@ -1,0 +1,63 @@
+{
+  "id": "marceltov/securo-trade-republic",
+  "name": {
+    "en": "Trade Republic"
+  },
+  "description": {
+    "en": "Read-only Trade Republic sync: cash account with readable transactions (booked and pending) and depot positions. Syncs only when you press Sync."
+  },
+  "version": "0.1.0",
+  "repository": "https://github.com/marceltov/securo-trade-republic",
+  "license": "MIT",
+  "min_securo_version": "0.20.0",
+  "workspaces": [
+    "personal"
+  ],
+  "runtime": {
+    "entrypoint": "tr_bank:plugin",
+    "lockfile": "requirements.txt"
+  },
+  "network": [
+    {
+      "host": "api.traderepublic.com",
+      "purpose": {
+        "en": "Log in (confirmed in your Trade Republic app) and read your cash account, timeline and depot positions."
+      }
+    }
+  ],
+  "contributes": {
+    "integrations": [
+      {
+        "key": "trade_republic",
+        "name": {
+          "en": "Trade Republic"
+        },
+        "description": {
+          "en": "Each sync may ask you to confirm a login in the Trade Republic app (a login lasts 24 hours). No orders or payouts, ever."
+        },
+        "auth": "credentials",
+        "fields": [
+          {
+            "key": "phone",
+            "label": {
+              "en": "Phone number of your Trade Republic account"
+            },
+            "secret": true
+          },
+          {
+            "key": "pin",
+            "label": {
+              "en": "Trade Republic PIN"
+            },
+            "secret": true
+          }
+        ],
+        "provides": [
+          "accounts",
+          "transactions",
+          "holdings"
+        ]
+      }
+    ]
+  }
+}
