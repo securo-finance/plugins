@@ -1,0 +1,60 @@
+{
+  "id": "finder42lab/securo-tbank-sync",
+  "name": {
+    "en": "T-Bank Investments",
+    "ru": "Т-Банк Инвестиции"
+  },
+  "repository": "https://github.com/Finder42Lab/securo-tbank-sync",
+  "description": {
+    "en": "Imports brokerage cash, operations, positions and trades from T-Bank Invest API.",
+    "ru": "Импортирует брокерские счета, операции, позиции и сделки из API Т-Банк Инвестиций."
+  },
+  "version": "0.1.8",
+  "license": "MIT",
+  "min_securo_version": "0.19.0",
+  "runtime": {
+    "entrypoint": "securo_tbank.plugin:plugin"
+  },
+  "network": [
+    {
+      "host": "invest-public-api.tbank.ru",
+      "purpose": {
+        "en": "Reads brokerage accounts and portfolio data.",
+        "ru": "Получает брокерские счета и данные портфеля."
+      }
+    }
+  ],
+  "contributes": {
+    "integrations": [
+      {
+        "key": "invest",
+        "name": {
+          "en": "T-Bank Invest API",
+          "ru": "API Т-Банк Инвестиций"
+        },
+        "description": {
+          "en": "Use a read-only T-Bank Invest API token.",
+          "ru": "Используйте read-only токен API Т-Банк Инвестиций."
+        },
+        "auth": "credentials",
+        "fields": [
+          {
+            "key": "token",
+            "label": {
+              "en": "Invest API token",
+              "ru": "Токен Invest API"
+            },
+            "secret": true
+          }
+        ],
+        "sync_minutes": 60,
+        "provides": [
+          "accounts",
+          "transactions",
+          "holdings",
+          "trades"
+        ]
+      }
+    ]
+  }
+}

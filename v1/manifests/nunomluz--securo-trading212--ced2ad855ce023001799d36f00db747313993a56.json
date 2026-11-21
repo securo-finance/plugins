@@ -1,0 +1,42 @@
+{
+  "id": "nunomluz/securo-trading212",
+  "name": { "en": "Trading 212" },
+  "description": {
+    "en": "Syncs a Trading 212 Invest or Stocks ISA account as a connected bank, read-only: cash, cash activity, dividends, positions and trades."
+  },
+  "version": "0.1.0",
+  "repository": "https://github.com/nunomluz/securo-trading212",
+  "license": "MIT",
+  "min_securo_version": "0.20.0",
+  "runtime": { "entrypoint": "securo_trading212.plugin:plugin" },
+  "network": [
+    {
+      "host": "live.trading212.com",
+      "purpose": { "en": "Reads your account, positions and history with the API key you enter." }
+    },
+    {
+      "host": "demo.trading212.com",
+      "purpose": { "en": "Same, for a Trading 212 practice (demo) account." }
+    }
+  ],
+  "contributes": {
+    "integrations": [
+      {
+        "key": "api",
+        "name": { "en": "Trading 212 API key" },
+        "description": {
+          "en": "Use an API key with read-only permissions: account, portfolio, history (orders, dividends, transactions) and metadata."
+        },
+        "auth": "credentials",
+        "fields": [
+          { "key": "api_key", "label": { "en": "API key" }, "secret": true },
+          { "key": "api_secret", "label": { "en": "API secret" }, "secret": true },
+          { "key": "environment", "label": { "en": "Environment: live or demo (default live)" }, "required": false }
+        ],
+        "sync_minutes": 60,
+        "provides": ["accounts", "transactions", "holdings", "trades"]
+      }
+    ]
+  },
+  "logos": { "trading212": "logos/trading212.png" }
+}

@@ -1,6 +1,45 @@
 {
   "plugins": [
     {
+      "id": "finder42lab/securo-tbank-sync",
+      "repository": "https://github.com/Finder42Lab/securo-tbank-sync",
+      "release": "v0.1.8",
+      "commit": "973809f0c42a358895eaed04954668350366f737",
+      "manifest": "manifests/finder42lab--securo-tbank-sync--973809f0c42a358895eaed04954668350366f737.json",
+      "manifest_sha256": "34a1470151b024b66bf15b9dc61a790f70da3c5ea698230019fa69da8c3ad636",
+      "name": {
+        "en": "T-Bank Investments",
+        "ru": "Т-Банк Инвестиции"
+      },
+      "description": {
+        "en": "Imports brokerage cash, operations, positions and trades from T-Bank Invest API.",
+        "ru": "Импортирует брокерские счета, операции, позиции и сделки из API Т-Банк Инвестиций."
+      },
+      "version": "0.1.8",
+      "license": "MIT",
+      "min_securo_version": "0.19.0",
+      "contributes": {
+        "integrations": 1
+      },
+      "workspaces": [
+        "personal",
+        "business"
+      ],
+      "locales": [
+        "en",
+        "ru"
+      ],
+      "topics": [],
+      "stars": 0,
+      "stars_7d": 0,
+      "added_at": "2026-11-21T19:27:13Z",
+      "updated_at": "2026-11-21T10:54:48Z",
+      "readme": "readmes/finder42lab--securo-tbank-sync--973809f0c42a358895eaed04954668350366f737.md",
+      "readme_sha256": "97ac79fb86ea4c7082bf05cbc7680105633d19fe1719cab1bdd2135e1ba5649a",
+      "archive": "archives/finder42lab--securo-tbank-sync--973809f0c42a358895eaed04954668350366f737.tar.gz",
+      "archive_sha256": "d438506ef9240a44941568211d7411a440c7376917e4c57fc4f0b4f253868d9a"
+    },
+    {
       "id": "fredson-sumi/securo-ibkr",
       "repository": "https://github.com/fredson-sumi/securo-ibkr",
       "release": "v0.3.1",
@@ -160,6 +199,43 @@
       "readme_sha256": "0abf9f2e3f84d846715b1095f9c499d501e0afeff651f2fa9cd5daf7306145b0",
       "archive": "archives/marceltov--securo-trade-republic--c43c9e2d2f6c44ff7739e36bec2bc165665711b9.tar.gz",
       "archive_sha256": "ee91567e2f26f957e838dd58169e2eb29963172a5c0c8ff9a83e06a84beb050a"
+    },
+    {
+      "id": "nunomluz/securo-trading212",
+      "repository": "https://github.com/nunomluz/securo-trading212",
+      "release": "v0.1.0",
+      "commit": "ced2ad855ce023001799d36f00db747313993a56",
+      "manifest": "manifests/nunomluz--securo-trading212--ced2ad855ce023001799d36f00db747313993a56.json",
+      "manifest_sha256": "b037838bdcf0d6b3790489503c9ae2b78a90a7a7480019068d402b5f7de7d979",
+      "name": {
+        "en": "Trading 212"
+      },
+      "description": {
+        "en": "Syncs a Trading 212 Invest or Stocks ISA account as a connected bank, read-only: cash, cash activity, dividends, positions and trades."
+      },
+      "version": "0.1.0",
+      "license": "MIT",
+      "min_securo_version": "0.20.0",
+      "contributes": {
+        "integrations": 1
+      },
+      "workspaces": [
+        "personal",
+        "business"
+      ],
+      "locales": [
+        "en"
+      ],
+      "topics": [],
+      "stars": 0,
+      "stars_7d": 0,
+      "added_at": "2026-11-21T19:27:13Z",
+      "updated_at": "2026-11-21T18:27:09Z",
+      "readme": "readmes/nunomluz--securo-trading212--ced2ad855ce023001799d36f00db747313993a56.md",
+      "readme_sha256": "2c19460f70463f3bc919af2e300084c1e96b1f219806165a40433af80fe16c65",
+      "icon": "icons/7c7c9c2f140d9e87e4ee02a1bd355a9d43706e713cadf2f189337d2ce6bfc13f.png",
+      "archive": "archives/nunomluz--securo-trading212--ced2ad855ce023001799d36f00db747313993a56.tar.gz",
+      "archive_sha256": "6f9f17dd37dfeb17ed0dc7543ef8ac693d42cb5adfe1c0746e5de302ed1facba"
     },
     {
       "id": "securo-finance/plugin-neon-themes",
