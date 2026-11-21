@@ -4,7 +4,7 @@ A [Securo](https://github.com/securo-finance/securo) plugin that syncs your Inte
 
 It works like the banks Securo connects to itself: you connect it from **+ Connect Bank**, it shows under **Bank Connections**, and its records carry the synced badge. Securo writes them, matching each one by its IBKR id, so a sync never duplicates anything.
 
-**Versions 0.2 and later need Securo 0.20.0 or later**, the first release with provider plugins. Securo 0.19.0 can't install them; [version 0.1](https://github.com/fredson-sumi/securo-ibkr/tree/v0.1.0) is the last one that runs there.
+**It needs Securo 0.20.0 or later**, the first release with provider plugins.
 
 Each sync brings in:
 
@@ -31,9 +31,9 @@ The first sync covers the last 365 days. Later syncs pick up from the last state
 |---|---|---|
 | Account Information | | Account ID, Currency, Account Alias or Name |
 | Cash Report | Currency breakout | Currency, Ending Cash |
-| Statement of Funds | | Currency, Date, Amount (or Debit and Credit), Activity Description (or Activity Code), Transaction ID, Trade ID, Symbol, Balance |
-| Open Positions | **Summary** level of detail, not lots | Conid, Symbol, Description, Asset Class, Sub Category, Currency, Position, Multiplier, Mark Price, Position Value, Cost Basis Money, ISIN, Side, Open Date/Time |
-| Trades (recommended) | Execution level | Conid, Symbol, Description, Asset Class, Sub Category, Currency, Trade ID, Trade Date, Quantity, Trade Price, Multiplier, Buy/Sell, Open/Close Indicator, Proceeds, Net Cash, IB Commission, IB Commission Currency, Taxes, Realized P/L (FIFO) |
+| Statement of Funds | Base Currency Summary | Currency, Date, Amount (or Debit and Credit), Activity Description (or Activity Code), Transaction ID, Trade ID, Symbol, Balance |
+| Open Positions | **Summary** level of detail, not lots | Conid, Symbol, Description, Asset Class, Sub Category, Currency, Quantity, Multiplier, Mark Price, Position Value, Cost Basis Money, ISIN, Side, Open Date Time |
+| Trades (recommended) | Execution level | Conid, Symbol, Description, Asset Class, Sub Category, Currency, Trade ID, Trade Date, Quantity, TradePrice, Multiplier, Buy/Sell, Open/Close Indicator, Proceeds, Net Cash, IB Commission, IB Commission Currency, Taxes, Realized P/L |
 
 4. Save the query and note its **Query ID**.
 
@@ -50,8 +50,6 @@ This version needs a Securo that syncs plugins as banks ([securo-finance/securo#
 IBKR publishes each day's activity some hours after that day ends, so the plugin asks for a day from 06:00 UTC the next day. If IBKR is later than that, a sync brings in the days before it and reports nothing wrong; the newest day follows a few hours later.
 
 If the token stops working, use **Reconnect** under Bank Connections and enter a new one. Disconnecting removes the accounts and archives the assets, as for any connected bank.
-
-**Coming from 0.1:** 0.1 wrote ordinary records through Securo's API. After the update, the connection syncs into new, synced records, starting again with the last 365 days; the 0.1 records stay as they were, so delete them once you're happy with the synced ones.
 
 ## What it can reach
 

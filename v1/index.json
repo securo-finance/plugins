@@ -3,10 +3,10 @@
     {
       "id": "fredson-sumi/securo-ibkr",
       "repository": "https://github.com/fredson-sumi/securo-ibkr",
-      "release": "v0.3.0",
-      "commit": "9134d73197ff184bc8ffeb3cec5119e737d2b493",
-      "manifest": "manifests/fredson-sumi--securo-ibkr--9134d73197ff184bc8ffeb3cec5119e737d2b493.json",
-      "manifest_sha256": "f72436f42215790af411ed4a534ba7e6ec394114d8531943edb3d8fa495fb9b1",
+      "release": "v0.3.1",
+      "commit": "346962d535609c663c561a95e467a71de0e6f328",
+      "manifest": "manifests/fredson-sumi--securo-ibkr--346962d535609c663c561a95e467a71de0e6f328.json",
+      "manifest_sha256": "ffac93cb4caefb1b7d24eac4759429c2a565c74dbb623ca066f74709c1e96f31",
       "name": {
         "en": "Interactive Brokers",
         "pt-BR": "Interactive Brokers"
@@ -15,7 +15,7 @@
         "en": "Syncs Interactive Brokers as a connected bank through an Activity Flex Query: cash balances, cash activity, positions and trades.",
         "pt-BR": "Sincroniza a Interactive Brokers como um banco conectado por meio de uma Activity Flex Query: saldos em caixa, movimentações, posições e operações."
       },
-      "version": "0.3.0",
+      "version": "0.3.1",
       "license": "MIT",
       "min_securo_version": "0.20.0",
       "contributes": {
@@ -37,12 +37,12 @@
       "stars": 3,
       "stars_7d": 0,
       "added_at": "2026-11-16T22:17:36Z",
-      "updated_at": "2026-11-18T19:28:48Z",
-      "readme": "readmes/fredson-sumi--securo-ibkr--9134d73197ff184bc8ffeb3cec5119e737d2b493.md",
-      "readme_sha256": "12a818e376f2297cad64a32556a076b6ebebce0f344745a9d0b650494801350c",
+      "updated_at": "2026-11-20T22:09:45Z",
+      "readme": "readmes/fredson-sumi--securo-ibkr--346962d535609c663c561a95e467a71de0e6f328.md",
+      "readme_sha256": "97d7b7991de177a98a40b0e7f5b278dda27978967f816b3054a23fa1703f92b5",
       "icon": "icons/e1ecd0771faa51861e9f62a260c5592ed53dd9c3a457aeba78dc7d4d66ecf61b.png",
-      "archive": "archives/fredson-sumi--securo-ibkr--9134d73197ff184bc8ffeb3cec5119e737d2b493.tar.gz",
-      "archive_sha256": "65d5b17ae441e7326a9a3ec3f75b764b01892aecf28a732584112fc24aebca55"
+      "archive": "archives/fredson-sumi--securo-ibkr--346962d535609c663c561a95e467a71de0e6f328.tar.gz",
+      "archive_sha256": "b8bf2d7514486f51668693185550bcb1039bdc8128bcae975d1480490f7b8ddb"
     },
     {
       "id": "fredson-sumi/securo-wise",

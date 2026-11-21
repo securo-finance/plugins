@@ -5,7 +5,7 @@
     "en": "Syncs Interactive Brokers as a connected bank through an Activity Flex Query: cash balances, cash activity, positions and trades.",
     "pt-BR": "Sincroniza a Interactive Brokers como um banco conectado por meio de uma Activity Flex Query: saldos em caixa, movimentações, posições e operações."
   },
-  "version": "0.3.0",
+  "version": "0.3.1",
   "repository": "https://github.com/fredson-sumi/securo-ibkr",
   "license": "MIT",
   "min_securo_version": "0.20.0",
