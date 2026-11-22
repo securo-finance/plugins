@@ -4,6 +4,11 @@ A read-only [Securo](https://github.com/securo-finance/securo) plugin (Securo 0.
 
 - **Cash account** with its balance and transactions from the Trade Republic timeline, with the merchant or counterparty as payee (card payments, transfers, interest, dividends, savings plan executions). Booked and pending entries are imported; cancelled, deleted and hidden ones are not.
 - **Depot positions** as holdings: ISIN, name, units, the current price from Trade Republic and the amount invested (units × average buy-in).
+- **Every buy and sale** of each position (orders, savings plan runs, Saveback and round-ups) with its execution date, units, price and fee, so Securo can show the position's history from the first buy. Cancelled and failed orders are not trades.
+
+Every number comes from Trade Republic: no other market data source is used.
+
+A timeline event that changes units in a way the plugin does not map yet (a transfer of securities in, a share bonus, an IPO allocation, a corporate action paid in shares) fails the sync with a message naming it, rather than leaving a history that doesn't add up. Trades already read are remembered in the connection's state, so only new ones are read in detail on later syncs.
 
 It talks only to `api.traderepublic.com`, through Securo's egress proxy.
 
