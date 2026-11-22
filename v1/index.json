@@ -30,7 +30,7 @@
         "ru"
       ],
       "topics": [],
-      "stars": 0,
+      "stars": 1,
       "stars_7d": 0,
       "added_at": "2026-11-21T19:27:13Z",
       "updated_at": "2026-11-21T10:54:48Z",
@@ -166,17 +166,17 @@
     {
       "id": "marceltov/securo-trade-republic",
       "repository": "https://github.com/marceltov/securo-trade-republic",
-      "release": "v0.2.0",
-      "commit": "8e89882ba3c655ab6217f8107fb3f838451dc26e",
-      "manifest": "manifests/marceltov--securo-trade-republic--8e89882ba3c655ab6217f8107fb3f838451dc26e.json",
-      "manifest_sha256": "411f924b6522f60e8873110333500e6d93546e2f43c7b045aabf917dc29aedb9",
+      "release": "v0.2.1",
+      "commit": "c8ef3c98b45558c81e8425be7d485e86763dec35",
+      "manifest": "manifests/marceltov--securo-trade-republic--c8ef3c98b45558c81e8425be7d485e86763dec35.json",
+      "manifest_sha256": "4c595cc221e8b6e914ede5ef928fcc33de48b64427afb4b6ef0e2ce1bbdbb7f3",
       "name": {
         "en": "Trade Republic"
       },
       "description": {
         "en": "Read-only Trade Republic sync: cash account with readable transactions (booked and pending) and depot positions. Syncs only when you press Sync."
       },
-      "version": "0.2.0",
+      "version": "0.2.1",
       "license": "MIT",
       "min_securo_version": "0.20.0",
       "contributes": {
@@ -194,11 +194,11 @@
       "stars": 0,
       "stars_7d": 0,
       "added_at": "2026-11-20T20:30:31Z",
-      "updated_at": "2026-11-21T20:46:24Z",
-      "readme": "readmes/marceltov--securo-trade-republic--8e89882ba3c655ab6217f8107fb3f838451dc26e.md",
-      "readme_sha256": "75aea9f58592cbd0634958c9dcfaa2ea1dbd72b8233fd3f74cbf530aa7f59d7c",
-      "archive": "archives/marceltov--securo-trade-republic--8e89882ba3c655ab6217f8107fb3f838451dc26e.tar.gz",
-      "archive_sha256": "64d1d3f85595a5074b179681a2bf6592969d4a58ac15373d9438a28e97cada9d"
+      "updated_at": "2026-11-22T07:51:56Z",
+      "readme": "readmes/marceltov--securo-trade-republic--c8ef3c98b45558c81e8425be7d485e86763dec35.md",
+      "readme_sha256": "1e95795d2e4869f0fea697858b5c06ba494baf911958146d74188cdf3005d6f7",
+      "archive": "archives/marceltov--securo-trade-republic--c8ef3c98b45558c81e8425be7d485e86763dec35.tar.gz",
+      "archive_sha256": "05d8366cff9f533b96a6b6e32acc8c2ae1f568f03761b838102dc72e445b2ce5"
     },
     {
       "id": "nunomluz/securo-trading212",

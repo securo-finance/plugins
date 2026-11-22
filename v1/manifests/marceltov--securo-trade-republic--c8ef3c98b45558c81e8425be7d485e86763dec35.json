@@ -6,7 +6,7 @@
   "description": {
     "en": "Read-only Trade Republic sync: cash account with readable transactions (booked and pending) and depot positions. Syncs only when you press Sync."
   },
-  "version": "0.2.0",
+  "version": "0.2.1",
   "repository": "https://github.com/marceltov/securo-trade-republic",
   "license": "MIT",
   "min_securo_version": "0.20.0",
