@@ -118,7 +118,7 @@
         "transferwise",
         "wise"
       ],
-      "stars": 1,
+      "stars": 2,
       "stars_7d": 0,
       "added_at": "2026-11-19T07:37:43Z",
       "updated_at": "2026-11-18T23:19:34Z",
@@ -162,6 +162,47 @@
       "readme_sha256": "afd8a2292befe371d86e273b320038f075f932a97beb267bb5ca0d79fca1734b",
       "archive": "archives/jschaufuss--securo-ing-fints--fa4191d472b474c091f8b9a0a6bad1fad1092ad0.tar.gz",
       "archive_sha256": "fae967a61c8b32401a8bd9bc2f9a7e441ceb712eb00106e7b29e3f3c009ca2b4"
+    },
+    {
+      "id": "marceltov/securo-ing-fints",
+      "repository": "https://github.com/marceltov/securo-ing-fints",
+      "release": "v1.0.0",
+      "commit": "af3e2a6586d69fcfcb123207dbda05390eedad2a",
+      "manifest": "manifests/marceltov--securo-ing-fints--af3e2a6586d69fcfcb123207dbda05390eedad2a.json",
+      "manifest_sha256": "8b8636c046f8ef2756a6e1bce0cf0f6c53c9bad6b7a0bf122a43b32603c62a7c",
+      "name": {
+        "en": "ING Germany (FinTS)",
+        "de": "ING Deutschland (FinTS)"
+      },
+      "description": {
+        "en": "Read-only ING Germany sync over FinTS: Girokonto with pending entries, Extra-Konten and Direkt-Depot positions with their buy-in, with readable payees and descriptions.",
+        "de": "Lesender ING-Abruf über FinTS: Girokonto mit vorgemerkten Umsätzen, Extra-Konten und Direkt-Depot-Positionen mit Einstandskurs, mit lesbaren Empfängern und Verwendungszwecken."
+      },
+      "version": "1.0.0",
+      "license": "MIT",
+      "min_securo_version": "0.20.0",
+      "contributes": {
+        "integrations": 1
+      },
+      "workspaces": [
+        "personal"
+      ],
+      "locales": [
+        "de",
+        "en"
+      ],
+      "topics": [
+        "fints",
+        "securo"
+      ],
+      "stars": 0,
+      "stars_7d": 0,
+      "added_at": "2026-11-23T07:52:24Z",
+      "updated_at": "2026-11-23T07:48:43Z",
+      "readme": "readmes/marceltov--securo-ing-fints--af3e2a6586d69fcfcb123207dbda05390eedad2a.md",
+      "readme_sha256": "0522df1a8c5fb66647d7cdcaf4f37f5d6e19c79872e2119b8c2939b8a0277080",
+      "archive": "archives/marceltov--securo-ing-fints--af3e2a6586d69fcfcb123207dbda05390eedad2a.tar.gz",
+      "archive_sha256": "010f5f4e730eb8550b97c8844c31529f980924e23437c9231e82540cb6ce297a"
     },
     {
       "id": "marceltov/securo-trade-republic",

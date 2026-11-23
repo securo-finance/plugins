@@ -1,0 +1,59 @@
+{
+  "id": "marceltov/securo-ing-fints",
+  "name": { "en": "ING Germany (FinTS)", "de": "ING Deutschland (FinTS)" },
+  "description": {
+    "en": "Read-only ING Germany sync over FinTS: Girokonto with pending entries, Extra-Konten and Direkt-Depot positions with their buy-in, with readable payees and descriptions.",
+    "de": "Lesender ING-Abruf über FinTS: Girokonto mit vorgemerkten Umsätzen, Extra-Konten und Direkt-Depot-Positionen mit Einstandskurs, mit lesbaren Empfängern und Verwendungszwecken."
+  },
+  "version": "1.0.0",
+  "repository": "https://github.com/marceltov/securo-ing-fints",
+  "license": "MIT",
+  "min_securo_version": "0.20.0",
+  "workspaces": ["personal"],
+  "runtime": { "entrypoint": "ing_fints.plugin:plugin", "lockfile": "requirements.txt" },
+  "network": [
+    {
+      "host": "fints.ing.de",
+      "purpose": {
+        "en": "Read balances, transactions and depot positions over FinTS.",
+        "de": "Salden, Umsätze und Depotpositionen über FinTS lesen."
+      }
+    }
+  ],
+  "contributes": {
+    "integrations": [
+      {
+        "key": "ing",
+        "name": { "en": "ING Germany", "de": "ING Deutschland" },
+        "description": {
+          "en": "Needs your own FinTS product registration. Reads only: no payments, no transfers.",
+          "de": "Braucht eine eigene FinTS-Produktregistrierung. Liest nur: keine Zahlungen, keine Überweisungen."
+        },
+        "auth": "credentials",
+        "fields": [
+          { "key": "login", "label": { "en": "ING login (Zugangsnummer)", "de": "ING-Zugangsnummer" }, "secret": true },
+          { "key": "pin", "label": { "en": "Internet banking PIN", "de": "Internetbanking-PIN" }, "secret": true },
+          { "key": "product_id", "label": { "en": "FinTS product registration number", "de": "FinTS-Produktregistrierungsnummer" }, "secret": true },
+          {
+            "key": "account_ibans",
+            "label": { "en": "IBANs to sync, comma-separated (empty: all)", "de": "Abzurufende IBANs, durch Komma getrennt (leer: alle)" },
+            "secret": true,
+            "required": false
+          },
+          {
+            "key": "history_days",
+            "label": { "en": "Days of history, 1 to 89 (default 85)", "de": "Tage Umsatzhistorie, 1 bis 89 (Standard 85)" },
+            "required": false
+          },
+          {
+            "key": "holdings",
+            "label": { "en": "Read depot positions: yes or no (default yes)", "de": "Depotpositionen lesen: ja oder nein (Standard ja)" },
+            "required": false
+          }
+        ],
+        "sync_minutes": 360,
+        "provides": ["accounts", "transactions", "holdings"]
+      }
+    ]
+  }
+}
