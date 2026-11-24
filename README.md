@@ -12,7 +12,7 @@ There's no review step: any repository with the `securo-plugin` topic, a release
 2. Add the `securo-plugin` topic to the repository.
 3. Publish a GitHub release. The index pins your plugin to the commit of the latest release, never to a branch, so pushing to `main` changes nothing until you release.
 
-The index is rebuilt every 6 hours. A new release appears as an update for workspaces that have the plugin installed.
+The index is rebuilt every 3 hours. A new release appears as an update for workspaces that have the plugin installed.
 
 To show your own icon in the catalog, add `icon.png` or `icon.webp` at the root of the repository: a PNG or WebP of at most 64 KB (a square image of 128 to 512 px looks best). The index copies it under its sha256 and Securo serves that copy itself, so showing it never sends anyone's browser to GitHub. Without one, or with one that is too large or isn't a PNG or WebP, the plugin is listed with a generated badge. Use a company's logo only if you have the right to: a plugin that misuses a mark can be revoked.
 
