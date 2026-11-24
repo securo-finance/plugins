@@ -1,0 +1,50 @@
+{
+  "id": "nunomluz/securo-kraken",
+  "name": { "en": "Kraken", "pt": "Kraken" },
+  "description": {
+    "en": "Syncs a Kraken spot account as a connected bank, read-only: fiat cash and cash activity, one asset per coin (Earn included) and the trades behind them.",
+    "pt": "Sincroniza uma conta spot da Kraken como banco ligado, só de leitura: saldos em moeda fiat e movimentos, um ativo por moeda (Earn incluído) e as transações que os explicam."
+  },
+  "version": "0.1.1",
+  "repository": "https://github.com/nunomluz/securo-kraken",
+  "license": "MIT",
+  "min_securo_version": "0.20.0",
+  "runtime": { "entrypoint": "securo_kraken.plugin:plugin" },
+  "network": [
+    {
+      "host": "api.kraken.com",
+      "purpose": {
+        "en": "Reads your balances and ledger with the API key you enter, and Kraken's public prices.",
+        "pt": "Lê os seus saldos e o livro de movimentos com a chave de API que indicar, e os preços públicos da Kraken."
+      }
+    }
+  ],
+  "contributes": {
+    "integrations": [
+      {
+        "key": "api",
+        "name": { "en": "Kraken API key", "pt": "Chave de API da Kraken" },
+        "description": {
+          "en": "Create a Kraken API key with only the Query Funds and Query Ledger Entries permissions, with no two-factor protection on the key, and use it for Securo only (another program using the same key can break it).",
+          "pt": "Crie uma chave de API da Kraken apenas com as permissões Query Funds e Query Ledger Entries, sem proteção de dois fatores na chave, e use-a só no Securo (outro programa a usar a mesma chave pode estragá-la)."
+        },
+        "auth": "credentials",
+        "fields": [
+          { "key": "api_key", "label": { "en": "API key", "pt": "Chave de API" }, "secret": true },
+          { "key": "api_secret", "label": { "en": "Private key", "pt": "Chave privada" }, "secret": true },
+          {
+            "key": "currency",
+            "label": {
+              "en": "Value assets in (EUR, USD, GBP, CAD, CHF, AUD or JPY; default EUR)",
+              "pt": "Valorizar ativos em (EUR, USD, GBP, CAD, CHF, AUD ou JPY; por omissão EUR)"
+            },
+            "required": false
+          }
+        ],
+        "sync_minutes": 60,
+        "provides": ["accounts", "transactions", "holdings", "trades"]
+      }
+    ]
+  },
+  "logos": { "kraken": "logos/kraken.png" }
+}

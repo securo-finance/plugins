@@ -4,6 +4,14 @@ A read-only bank provider plugin for [Securo](https://github.com/securo-finance/
 
 **This plugin is AI-generated and was developed with AI assistance.** It is an independent, community project and is not affiliated with, endorsed by, or supported by ING or Securo. It has been tested with one live ING connection and is not yet broadly production-verified.
 
+## Approach and alternatives
+
+This plugin aims to represent the data ING returns over FinTS as directly as Securo's bank-provider contract allows. It uses ING-provided text for payees and descriptions without merchant-specific cleanup or renaming. It does normalize whitespace, limit field lengths, select among available fields and generate salted IDs, so the displayed data is not a byte-for-byte copy of the bank's response. Securo's own settings and rules can also affect what is displayed.
+
+The plugin does not apply its own heuristic to pair pending entries with booked transactions. Securo may still match them during synchronization, and that matching can fail when ING changes the date or description; see the pending limitation below.
+
+For a different approach, [Marceltov's ING FinTS plugin](https://github.com/Marceltov/securo-ing-fints) offers formatted merchant names and transaction descriptions, and attempts to match pending entries to booked transactions. Its matching uses transaction details rather than a verified shared bank reference, and its pending cleanup has specific Securo configuration requirements; consult its documentation for the trade-offs and setup.
+
 ## Before you start
 
 - Securo **0.20.0 or later**, with plugins enabled and the code plugin runner and egress proxy configured. An administrator must enable these services; see the [Securo bank provider guide](https://github.com/securo-finance/securo/blob/v0.20.0/docs/plugins/bank-provider-plugins.md).
@@ -30,9 +38,17 @@ The plugin must first be published to the catalog used by your Securo instance b
 
 To show pending transactions, enable **Import pending transactions** in Securo's connection settings. The plugin marks the separately returned pending entries as pending; Securo decides whether to import them. Transaction data may change when an entry is booked, so verify that pending entries are matched or cleared and watch for duplicates. Pending amounts may already be reflected in the selected balance; do not subtract them again without checking.
 
+### Known limitation: pending transactions and balances
+
+Pending transactions do not always transition to booked in Securo. ING can report a different date or description after booking, and the pending entry may remain alongside the booked entry even after ING stops returning it. Transactions with the same amount can be separate purchases; do not merge them based on amount alone. Disabling **Import pending transactions** prevents importing new pending entries, but may not remove entries already imported.
+
+As a temporary workaround, disable **Import pending transactions** and use balance mode `booked` for a balance consistent with booked transactions. Alternatively, `pending` may show a balance that already reflects pending amounts, but those amounts will not be visible in the transaction list when pending imports are disabled. Actual balance semantics depend on ING's response; compare with ING before relying on either mode.
+
+**To do:** Investigate whether ING provides a stable, unique reference across pending and booked FinTS records, compare a pending record with its later booked form without collecting credentials or full bank responses, and verify Securo's update behavior. Only implement automatic matching when it is unambiguous, with tests covering repeated amounts, changed dates and descriptions, missing references, and duplicate references. Document any cases requiring manual review. See [issue #1](https://github.com/jschaufuss/securo-ing-fints/issues/1).
+
 ## Limitations and privacy
 
-- ING supports Direct Depot data via FinTS. Depot discovery and an empty depot response have been tested, but importing live holdings is **experimental and not yet verified with actual positions**. The plugin reads complete MT535 positions and leaves existing holdings unchanged when a depot reports no positions; missing or incomplete data stops the sync rather than deleting assets. Compare imported positions and valuations with ING.
+- ING supports Direct Depot data via FinTS. Importing a live position has been observed; depot support remains **experimental**. Depots are read separately and a valid empty depot does not block positions from other depots. The plugin requires a complete MT535 envelope; missing or incomplete answers do not replace holdings. Securo may archive positions that disappear from a complete holdings response. Unit prices are included only when supported fields with matching currency are available. Purchase costs are not imported because their interpretation has not been verified; tickers are not inferred from ISINs. Compare positions and valuations with ING.
 - ING does not list Rahmenkredit as a supported FinTS account in its current [FinTS FAQ](https://www.ing.de/hilfe/log-in/fints/). This plugin does not implement or verify Rahmenkredit support.
 - Interactive TAN or app approval is not implemented. If ING requires a challenge that cannot be completed by this read-only flow, the connection pauses and needs attention.
 - The bank's FinTS balance can differ from the balance shown in ING's app, including because of pending items. Do not assume either balance mode matches the app in every situation.

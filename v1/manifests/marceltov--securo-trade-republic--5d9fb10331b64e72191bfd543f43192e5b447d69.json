@@ -1,0 +1,71 @@
+{
+  "id": "marceltov/securo-trade-republic",
+  "name": {
+    "en": "Trade Republic",
+    "de": "Trade Republic"
+  },
+  "description": {
+    "en": "Read-only Trade Republic sync: cash account with readable transactions (booked and pending) and depot positions. Syncs only when you press Sync.",
+    "de": "Lesender Trade-Republic-Abruf: Verrechnungskonto mit lesbaren Umsätzen (gebucht und vorgemerkt) und Depotpositionen. Ruft nur ab, wenn du auf Synchronisieren drückst."
+  },
+  "version": "0.2.2",
+  "repository": "https://github.com/marceltov/securo-trade-republic",
+  "license": "MIT",
+  "min_securo_version": "0.20.0",
+  "workspaces": [
+    "personal"
+  ],
+  "runtime": {
+    "entrypoint": "trade_republic.plugin:plugin",
+    "lockfile": "requirements.txt"
+  },
+  "network": [
+    {
+      "host": "api.traderepublic.com",
+      "purpose": {
+        "en": "Log in (confirmed in your Trade Republic app) and read your cash account, timeline and depot positions.",
+        "de": "Anmelden (in deiner Trade-Republic-App bestätigt) und dein Verrechnungskonto, deine Zeitleiste und deine Depotpositionen lesen."
+      }
+    }
+  ],
+  "contributes": {
+    "integrations": [
+      {
+        "key": "trade_republic",
+        "name": {
+          "en": "Trade Republic",
+          "de": "Trade Republic"
+        },
+        "description": {
+          "en": "Each sync may ask you to confirm a login in the Trade Republic app (a login lasts 24 hours). No orders or payouts, ever.",
+          "de": "Jeder Abruf kann nach einer Bestätigung der Anmeldung in der Trade-Republic-App fragen (eine Anmeldung gilt 24 Stunden). Niemals Orders oder Auszahlungen."
+        },
+        "auth": "credentials",
+        "fields": [
+          {
+            "key": "phone",
+            "label": {
+              "en": "Phone number of your Trade Republic account",
+              "de": "Telefonnummer deines Trade-Republic-Kontos"
+            },
+            "secret": true
+          },
+          {
+            "key": "pin",
+            "label": {
+              "en": "Trade Republic PIN",
+              "de": "Trade-Republic-PIN"
+            },
+            "secret": true
+          }
+        ],
+        "provides": [
+          "accounts",
+          "transactions",
+          "holdings",
+          "trades"
+        ]
+      }
+    ]
+  }
+}

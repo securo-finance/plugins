@@ -5,7 +5,7 @@
     "en": "Read-only ING Germany sync over FinTS: Girokonto with pending entries, Extra-Konten and Direkt-Depot positions with their buy-in, with readable payees and descriptions.",
     "de": "Lesender ING-Abruf über FinTS: Girokonto mit vorgemerkten Umsätzen, Extra-Konten und Direkt-Depot-Positionen mit Einstandskurs, mit lesbaren Empfängern und Verwendungszwecken."
   },
-  "version": "1.0.0",
+  "version": "0.1.0",
   "repository": "https://github.com/marceltov/securo-ing-fints",
   "license": "MIT",
   "min_securo_version": "0.20.0",

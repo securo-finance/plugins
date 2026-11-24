@@ -25,21 +25,32 @@ That is why the plugin has **no schedule**: Securo syncs it only when you press 
 
 Accounts that confirm logins with an authenticator code instead of the app are not supported.
 
+No FinTS registration is needed: Trade Republic has no FinTS, and the plugin uses the app's own login.
+
 ## Safety
 
-- **Read-only by construction.** The client can subscribe to `cash`, `compactPortfolioByType`, `timelineTransactions`, `timelineActivityLog`, `timelineDetailV2`, `instrument` and `ticker` only (`ALLOWED_SUBSCRIPTIONS` in `tr_client.py`); there is no code for orders, savings plans or payouts.
+- **Read-only by construction.** The client can subscribe to `cash`, `compactPortfolioByType`, `timelineTransactions`, `timelineActivityLog`, `timelineDetailV2`, `instrument` and `ticker` only (`ALLOWED_SUBSCRIPTIONS` in `trade_republic/client.py`); there is no code for orders, savings plans or payouts.
 - **The login itself is not read-only.** A Trade Republic web session can trade. Securo keeps it in the connection's sealed secrets; treat your Securo server accordingly.
 - **Fails closed.** An answer this plugin does not recognise fails the sync; it never reports an empty list (Securo would archive what it already has).
 - Error messages never carry the phone number, PIN, session or account number.
 
 ## Development
 
+Securo's plugin runner runs Python 3.14, and so does this code.
+
 ```sh
-uv run --python 3.14 --with requests --with 'websockets>=15' python -m unittest discover -s tests
-./generate-lock.sh   # hashed requirements.txt for Securo's runner
+uv sync
+uv run pytest -q
+uv run ruff check && uv run ruff format --check
 ```
 
+`requirements.txt` is what Securo's runner installs; after a change to `uv.lock`, regenerate it with `uv export --frozen --no-dev --no-emit-project --no-header --format requirements-txt > requirements.txt`. Decisions are in [`docs/adr/`](docs/adr/).
+
 The login and websocket protocol follow [pytr](https://github.com/pytr-org/pytr) (MIT), reduced to what a read-only sync needs.
+
+## Other Securo plugins
+
+- [ING Germany (FinTS)](https://github.com/marceltov/securo-ing-fints): Girokonto with pending entries, Extra-Konten and Direkt-Depot positions. It needs a FinTS product registration; its README says how to get one.
 
 ## License
 

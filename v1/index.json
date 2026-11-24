@@ -74,7 +74,7 @@
         "securo"
       ],
       "stars": 3,
-      "stars_7d": 0,
+      "stars_7d": 3,
       "added_at": "2026-11-16T22:17:36Z",
       "updated_at": "2026-11-20T22:09:45Z",
       "readme": "readmes/fredson-sumi--securo-ibkr--346962d535609c663c561a95e467a71de0e6f328.md",
@@ -129,19 +129,52 @@
       "archive_sha256": "488c7760866521e46267c02db3fc0e8a65b9aea858bfdceba523c3e7347b18d2"
     },
     {
+      "id": "jschaufuss/securo-fixed-costs-report",
+      "repository": "https://github.com/jschaufuss/securo-fixed-costs-report",
+      "release": "v1.0.2",
+      "commit": "fd05403f75c574406211a686a3e0f087d425300b",
+      "manifest": "manifests/jschaufuss--securo-fixed-costs-report--fd05403f75c574406211a686a3e0f087d425300b.json",
+      "manifest_sha256": "98bf350157d829206ce06f1ed6c320dff5a4fce39f6372b7acbcf6e7101630b0",
+      "name": "Fixed Costs and Subscriptions",
+      "description": "Finds potentially recurring expenses and shows their monthly cost.",
+      "version": "1.0.2",
+      "license": "MIT",
+      "min_securo_version": "0.21.0",
+      "contributes": {
+        "reports": 1
+      },
+      "workspaces": [
+        "personal",
+        "business"
+      ],
+      "locales": [
+        "en"
+      ],
+      "topics": [],
+      "stars": 0,
+      "stars_7d": 0,
+      "added_at": "2026-11-24T00:02:05Z",
+      "updated_at": "2026-11-23T19:22:07Z",
+      "readme": "readmes/jschaufuss--securo-fixed-costs-report--fd05403f75c574406211a686a3e0f087d425300b.md",
+      "readme_sha256": "e8f36dac1939311df0693891e65521d895b4286bd38e49fac234a6fae01ecc39",
+      "icon": "icons/8f0499dc6303f784b0a9b458d4a9be22707c47aeb6ae83d4815168279a78a03e.webp",
+      "archive": "archives/jschaufuss--securo-fixed-costs-report--fd05403f75c574406211a686a3e0f087d425300b.tar.gz",
+      "archive_sha256": "37ebc481ca0488200e9a8a8a879dc4f73aaf024dc341e06edeadaea95ed7593b"
+    },
+    {
       "id": "jschaufuss/securo-ing-fints",
       "repository": "https://github.com/jschaufuss/securo-ing-fints",
-      "release": "v1.0.0",
-      "commit": "fa4191d472b474c091f8b9a0a6bad1fad1092ad0",
-      "manifest": "manifests/jschaufuss--securo-ing-fints--fa4191d472b474c091f8b9a0a6bad1fad1092ad0.json",
-      "manifest_sha256": "e8f96654513c8a5de149996471e137de7fb230d13714092085e9fcfb794407e3",
+      "release": "v1.0.2",
+      "commit": "059110995fcccabc362300f88b1a61309124b1c8",
+      "manifest": "manifests/jschaufuss--securo-ing-fints--059110995fcccabc362300f88b1a61309124b1c8.json",
+      "manifest_sha256": "216804f1c3e2294f3dab8d5f44bed1f30426b60362485f56a6aaeaff4f1adeec",
       "name": {
         "en": "ING Germany (FinTS)"
       },
       "description": {
         "en": "Read-only ING Germany FinTS bank sync (checking, savings; optional experimental holdings)."
       },
-      "version": "1.0.0",
+      "version": "1.0.2",
       "license": "MIT",
       "min_securo_version": "0.20.0",
       "contributes": {
@@ -157,19 +190,19 @@
       "stars": 1,
       "stars_7d": 0,
       "added_at": "2026-11-18T20:40:34Z",
-      "updated_at": "2026-11-18T19:38:47Z",
-      "readme": "readmes/jschaufuss--securo-ing-fints--fa4191d472b474c091f8b9a0a6bad1fad1092ad0.md",
-      "readme_sha256": "afd8a2292befe371d86e273b320038f075f932a97beb267bb5ca0d79fca1734b",
-      "archive": "archives/jschaufuss--securo-ing-fints--fa4191d472b474c091f8b9a0a6bad1fad1092ad0.tar.gz",
-      "archive_sha256": "fae967a61c8b32401a8bd9bc2f9a7e441ceb712eb00106e7b29e3f3c009ca2b4"
+      "updated_at": "2026-11-23T18:58:04Z",
+      "readme": "readmes/jschaufuss--securo-ing-fints--059110995fcccabc362300f88b1a61309124b1c8.md",
+      "readme_sha256": "ac9e6e0474447d9e7c177e35be0c51e495b2ead2f04d6e1bfd799378e440273c",
+      "archive": "archives/jschaufuss--securo-ing-fints--059110995fcccabc362300f88b1a61309124b1c8.tar.gz",
+      "archive_sha256": "39a183a6ef6bc1cad3810d8e91b3ba9b84b53698a9f32b6b16a5ac7c0a3f77ab"
     },
     {
       "id": "marceltov/securo-ing-fints",
       "repository": "https://github.com/marceltov/securo-ing-fints",
-      "release": "v1.0.0",
-      "commit": "af3e2a6586d69fcfcb123207dbda05390eedad2a",
-      "manifest": "manifests/marceltov--securo-ing-fints--af3e2a6586d69fcfcb123207dbda05390eedad2a.json",
-      "manifest_sha256": "8b8636c046f8ef2756a6e1bce0cf0f6c53c9bad6b7a0bf122a43b32603c62a7c",
+      "release": "v0.1.0",
+      "commit": "afc23cd33102cfab9f45bf15eac2dda804aee00b",
+      "manifest": "manifests/marceltov--securo-ing-fints--afc23cd33102cfab9f45bf15eac2dda804aee00b.json",
+      "manifest_sha256": "90a427229f66e1ae8ff1a5a4f327e2e573bb44263f76737653fabeda3cea46ed",
       "name": {
         "en": "ING Germany (FinTS)",
         "de": "ING Deutschland (FinTS)"
@@ -178,7 +211,7 @@
         "en": "Read-only ING Germany sync over FinTS: Girokonto with pending entries, Extra-Konten and Direkt-Depot positions with their buy-in, with readable payees and descriptions.",
         "de": "Lesender ING-Abruf über FinTS: Girokonto mit vorgemerkten Umsätzen, Extra-Konten und Direkt-Depot-Positionen mit Einstandskurs, mit lesbaren Empfängern und Verwendungszwecken."
       },
-      "version": "1.0.0",
+      "version": "0.1.0",
       "license": "MIT",
       "min_securo_version": "0.20.0",
       "contributes": {
@@ -198,26 +231,28 @@
       "stars": 0,
       "stars_7d": 0,
       "added_at": "2026-11-23T07:52:24Z",
-      "updated_at": "2026-11-23T07:48:43Z",
-      "readme": "readmes/marceltov--securo-ing-fints--af3e2a6586d69fcfcb123207dbda05390eedad2a.md",
+      "updated_at": "2026-11-23T07:54:57Z",
+      "readme": "readmes/marceltov--securo-ing-fints--afc23cd33102cfab9f45bf15eac2dda804aee00b.md",
       "readme_sha256": "0522df1a8c5fb66647d7cdcaf4f37f5d6e19c79872e2119b8c2939b8a0277080",
-      "archive": "archives/marceltov--securo-ing-fints--af3e2a6586d69fcfcb123207dbda05390eedad2a.tar.gz",
-      "archive_sha256": "010f5f4e730eb8550b97c8844c31529f980924e23437c9231e82540cb6ce297a"
+      "archive": "archives/marceltov--securo-ing-fints--afc23cd33102cfab9f45bf15eac2dda804aee00b.tar.gz",
+      "archive_sha256": "89afb9c85e2a38e8056b44c138d02f01d81efce8a81500cd6cef908b37b06252"
     },
     {
       "id": "marceltov/securo-trade-republic",
       "repository": "https://github.com/marceltov/securo-trade-republic",
-      "release": "v0.2.1",
-      "commit": "c8ef3c98b45558c81e8425be7d485e86763dec35",
-      "manifest": "manifests/marceltov--securo-trade-republic--c8ef3c98b45558c81e8425be7d485e86763dec35.json",
-      "manifest_sha256": "4c595cc221e8b6e914ede5ef928fcc33de48b64427afb4b6ef0e2ce1bbdbb7f3",
+      "release": "v0.2.2",
+      "commit": "5d9fb10331b64e72191bfd543f43192e5b447d69",
+      "manifest": "manifests/marceltov--securo-trade-republic--5d9fb10331b64e72191bfd543f43192e5b447d69.json",
+      "manifest_sha256": "7fdba69a15c541ecf206d7c5ddab849806740cdf7f77addf3922afa506ae9db9",
       "name": {
-        "en": "Trade Republic"
+        "en": "Trade Republic",
+        "de": "Trade Republic"
       },
       "description": {
-        "en": "Read-only Trade Republic sync: cash account with readable transactions (booked and pending) and depot positions. Syncs only when you press Sync."
+        "en": "Read-only Trade Republic sync: cash account with readable transactions (booked and pending) and depot positions. Syncs only when you press Sync.",
+        "de": "Lesender Trade-Republic-Abruf: Verrechnungskonto mit lesbaren Umsätzen (gebucht und vorgemerkt) und Depotpositionen. Ruft nur ab, wenn du auf Synchronisieren drückst."
       },
-      "version": "0.2.1",
+      "version": "0.2.2",
       "license": "MIT",
       "min_securo_version": "0.20.0",
       "contributes": {
@@ -227,6 +262,7 @@
         "personal"
       ],
       "locales": [
+        "de",
         "en"
       ],
       "topics": [
@@ -235,11 +271,51 @@
       "stars": 0,
       "stars_7d": 0,
       "added_at": "2026-11-20T20:30:31Z",
-      "updated_at": "2026-11-22T07:51:56Z",
-      "readme": "readmes/marceltov--securo-trade-republic--c8ef3c98b45558c81e8425be7d485e86763dec35.md",
-      "readme_sha256": "1e95795d2e4869f0fea697858b5c06ba494baf911958146d74188cdf3005d6f7",
-      "archive": "archives/marceltov--securo-trade-republic--c8ef3c98b45558c81e8425be7d485e86763dec35.tar.gz",
-      "archive_sha256": "05d8366cff9f533b96a6b6e32acc8c2ae1f568f03761b838102dc72e445b2ce5"
+      "updated_at": "2026-11-23T08:18:58Z",
+      "readme": "readmes/marceltov--securo-trade-republic--5d9fb10331b64e72191bfd543f43192e5b447d69.md",
+      "readme_sha256": "f65f269d4271bf3b65b9fc15af04260e4f66561675dfd837cd054563496a4bb2",
+      "archive": "archives/marceltov--securo-trade-republic--5d9fb10331b64e72191bfd543f43192e5b447d69.tar.gz",
+      "archive_sha256": "065b5fcdc54c91d3f0c381976d87dbb24e5b31491e161fb73f5f2f75cd5d4020"
+    },
+    {
+      "id": "nunomluz/securo-kraken",
+      "repository": "https://github.com/nunomluz/securo-kraken",
+      "release": "v0.1.1",
+      "commit": "d61bdf3e0955167a404326d5b8d36a44b7e71704",
+      "manifest": "manifests/nunomluz--securo-kraken--d61bdf3e0955167a404326d5b8d36a44b7e71704.json",
+      "manifest_sha256": "9536e8a3fa2100982356d99e087a55ffa727dc29dc3b09e2d938b0fbc6449846",
+      "name": {
+        "en": "Kraken",
+        "pt": "Kraken"
+      },
+      "description": {
+        "en": "Syncs a Kraken spot account as a connected bank, read-only: fiat cash and cash activity, one asset per coin (Earn included) and the trades behind them.",
+        "pt": "Sincroniza uma conta spot da Kraken como banco ligado, só de leitura: saldos em moeda fiat e movimentos, um ativo por moeda (Earn incluído) e as transações que os explicam."
+      },
+      "version": "0.1.1",
+      "license": "MIT",
+      "min_securo_version": "0.20.0",
+      "contributes": {
+        "integrations": 1
+      },
+      "workspaces": [
+        "personal",
+        "business"
+      ],
+      "locales": [
+        "en",
+        "pt"
+      ],
+      "topics": [],
+      "stars": 0,
+      "stars_7d": 0,
+      "added_at": "2026-11-24T00:02:05Z",
+      "updated_at": "2026-11-23T15:14:47Z",
+      "readme": "readmes/nunomluz--securo-kraken--d61bdf3e0955167a404326d5b8d36a44b7e71704.md",
+      "readme_sha256": "008588b7b59cc2f22a22473935deabeb165568f5271edea2f736c6caf8c24d96",
+      "icon": "icons/eb7b1cc9f37c507361cc10f262123490a6d839fd59befb694c02cf88b8ddaa9f.png",
+      "archive": "archives/nunomluz--securo-kraken--d61bdf3e0955167a404326d5b8d36a44b7e71704.tar.gz",
+      "archive_sha256": "bfdb45c8aa40e4b6952c64bf4ae103e7e1773db338a038dd7b4ceef7387d94bd"
     },
     {
       "id": "nunomluz/securo-trading212",
@@ -327,7 +403,7 @@
         "theme"
       ],
       "stars": 2,
-      "stars_7d": 2,
+      "stars_7d": 1,
       "added_at": "2026-11-14T15:35:57Z",
       "updated_at": "2026-11-19T21:01:48Z",
       "readme": "readmes/securo-finance--plugin-neon-themes--a5bedea2181c908f17052e0773f86a994c6f765f.md",

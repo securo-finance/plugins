@@ -1,0 +1,37 @@
+{
+  "id": "jschaufuss/securo-fixed-costs-report",
+  "name": "Fixed Costs and Subscriptions",
+  "description": "Finds potentially recurring expenses and shows their monthly cost.",
+  "version": "1.0.2",
+  "repository": "https://github.com/jschaufuss/securo-fixed-costs-report",
+  "license": "MIT",
+  "min_securo_version": "0.21.0",
+  "runtime": {
+    "entrypoint": "fixed_costs:plugin"
+  },
+  "api_scopes": [
+    {
+      "scope": "transactions:read",
+      "purpose": "Recognize recurring expenses from transaction history."
+    },
+    {
+      "scope": "categories:read",
+      "purpose": "Exclude ignored and transfer categories."
+    }
+  ],
+  "contributes": {
+    "reports": [
+      {
+        "key": "fixed-costs",
+        "name": {
+          "en": "Fixed costs and subscriptions"
+        },
+        "code": true,
+        "inputs": [
+          "transactions",
+          "categories"
+        ]
+      }
+    ]
+  }
+}

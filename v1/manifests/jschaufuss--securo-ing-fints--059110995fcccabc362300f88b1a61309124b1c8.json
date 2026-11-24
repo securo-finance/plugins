@@ -6,7 +6,7 @@
   "description": {
     "en": "Read-only ING Germany FinTS bank sync (checking, savings; optional experimental holdings)."
   },
-  "version": "1.0.0",
+  "version": "1.0.2",
   "repository": "https://github.com/jschaufuss/securo-ing-fints",
   "license": "MIT",
   "min_securo_version": "0.20.0",
@@ -16,6 +16,9 @@
   "runtime": {
     "entrypoint": "ing_bank:plugin",
     "lockfile": "requirements.txt"
+  },
+  "logos": {
+    "bank": "bank-logo-256.png"
   },
   "network": [
     {
