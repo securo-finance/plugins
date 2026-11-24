@@ -4,7 +4,7 @@ A read-only [Securo](https://github.com/securo-finance/securo) plugin (Securo 0.
 
 - **Cash account** with its balance and transactions from the Trade Republic timeline, with the merchant or counterparty as payee (card payments, transfers, interest, dividends, savings plan executions). Booked and pending entries are imported; cancelled, deleted and hidden ones are not.
 - **Depot positions** as holdings: ISIN, name, units, the current price from Trade Republic and the amount invested (units × average buy-in).
-- **Every buy and sale** of each position (orders, savings plan runs, Saveback and round-ups) with its execution date, units, price and fee, so Securo can show the position's history from the first buy. Cancelled and failed orders are not trades.
+- **Every buy and sale** of each position (orders, savings plan runs, Saveback and round-ups) with its execution date, units, price and fee. Securo keeps them as the position's ledger (cost basis per order, realized gains); from the release with [securo#1753](https://github.com/securo-finance/securo/pull/1753) (merged, not yet released) it also draws the position's chart from them, from the first buy. Cancelled and failed orders are not trades.
 - **Units that came in another way**, from Trade Republic's activity log: free shares (a buy at Trade Republic's price) and transfers of securities from another bank (a buy on the day Trade Republic received them; a transfer carries no price, so it is priced from the position's average buy-in in Trade Republic, which keeps the invested amount as the app shows it).
 
 Every number comes from Trade Republic: no other market data source is used.
@@ -14,6 +14,26 @@ A timeline event that changes units in a way the plugin does not map yet (a tran
 It talks only to `api.traderepublic.com`, through Securo's egress proxy.
 
 ## How syncing works
+
+```mermaid
+sequenceDiagram
+  participant You
+  participant Securo
+  participant Plugin
+  participant TR as Trade Republic
+  You->>Securo: press Sync
+  Securo->>Plugin: sync
+  alt no login in the last 24 hours
+    Plugin->>TR: start a web login (phone number, PIN)
+    TR-->>You: "confirm this login" in the app
+    You-->>TR: confirm, within 50 seconds
+  end
+  Plugin->>TR: read cash, timeline, activity log and depot
+  TR-->>Plugin: answers (read-only subscriptions)
+  Plugin-->>Securo: account, entries, holdings with their trades
+```
+
+A confirmation on your phone comes only right after you pressed Sync, and at most once a day.
 
 Trade Republic has no official API. This plugin uses the same web login as `app.traderepublic.com`:
 
@@ -27,12 +47,16 @@ Accounts that confirm logins with an authenticator code instead of the app are n
 
 No FinTS registration is needed: Trade Republic has no FinTS, and the plugin uses the app's own login.
 
+## Pending entries
+
+A pending entry keeps its ID when Trade Republic books it, so Securo turns the row booked in place. An entry Trade Republic cancels leaves the timeline; Securo removes its row only for a plugin that declares a complete feed, which this one can from the Securo release with [securo#1728](https://github.com/securo-finance/securo/pull/1728); with [securo#1772](https://github.com/securo-finance/securo/pull/1772) the row goes on the next sync rather than a week later (both merged, not yet released). On Securo 0.21.0 and older, a cancelled pending entry stays until you delete it.
+
 ## Safety
 
 - **Read-only by construction.** The client can subscribe to `cash`, `compactPortfolioByType`, `timelineTransactions`, `timelineActivityLog`, `timelineDetailV2`, `instrument` and `ticker` only (`ALLOWED_SUBSCRIPTIONS` in `trade_republic/client.py`); there is no code for orders, savings plans or payouts.
 - **The login itself is not read-only.** A Trade Republic web session can trade. Securo keeps it in the connection's sealed secrets; treat your Securo server accordingly.
 - **Fails closed.** An answer this plugin does not recognise fails the sync; it never reports an empty list (Securo would archive what it already has).
-- Error messages never carry the phone number, PIN, session or account number.
+- Error messages never carry the phone number, PIN, session or account number, and the logs of the libraries it uses (websockets, requests) are switched off: they can carry what Trade Republic sent.
 
 ## Development
 
@@ -44,7 +68,7 @@ uv run pytest -q
 uv run ruff check && uv run ruff format --check
 ```
 
-`requirements.txt` is what Securo's runner installs; after a change to `uv.lock`, regenerate it with `uv export --frozen --no-dev --no-emit-project --no-header --format requirements-txt > requirements.txt`. Decisions are in [`docs/adr/`](docs/adr/).
+`requirements.txt` is what Securo's runner installs; after a change to `uv.lock`, regenerate it with `uv export --frozen --no-dev --no-emit-project --no-header --format requirements-txt > requirements.txt`. Decisions are in [`docs/adr/`](https://github.com/marceltov/securo-trade-republic/tree/main/docs/adr).
 
 The login and websocket protocol follow [pytr](https://github.com/pytr-org/pytr) (MIT), reduced to what a read-only sync needs.
 
@@ -54,4 +78,4 @@ The login and websocket protocol follow [pytr](https://github.com/pytr-org/pytr)
 
 ## License
 
-MIT
+[MIT](https://github.com/marceltov/securo-trade-republic/blob/main/LICENSE)

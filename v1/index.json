@@ -73,8 +73,8 @@
         "interactive-brokers",
         "securo"
       ],
-      "stars": 3,
-      "stars_7d": 3,
+      "stars": 4,
+      "stars_7d": 4,
       "added_at": "2026-11-16T22:17:36Z",
       "updated_at": "2026-11-20T22:09:45Z",
       "readme": "readmes/fredson-sumi--securo-ibkr--346962d535609c663c561a95e467a71de0e6f328.md",
@@ -164,17 +164,17 @@
     {
       "id": "jschaufuss/securo-ing-fints",
       "repository": "https://github.com/jschaufuss/securo-ing-fints",
-      "release": "v1.0.2",
-      "commit": "059110995fcccabc362300f88b1a61309124b1c8",
-      "manifest": "manifests/jschaufuss--securo-ing-fints--059110995fcccabc362300f88b1a61309124b1c8.json",
-      "manifest_sha256": "216804f1c3e2294f3dab8d5f44bed1f30426b60362485f56a6aaeaff4f1adeec",
+      "release": "v1.0.3",
+      "commit": "745d40862fb171dd6f226e21241a73acbdfab5af",
+      "manifest": "manifests/jschaufuss--securo-ing-fints--745d40862fb171dd6f226e21241a73acbdfab5af.json",
+      "manifest_sha256": "eaed69aa9df1f9b142e86253827a735b3fefbe91d8a98043711c7ce9ba906297",
       "name": {
         "en": "ING Germany (FinTS)"
       },
       "description": {
         "en": "Read-only ING Germany FinTS bank sync (checking, savings; optional experimental holdings)."
       },
-      "version": "1.0.2",
+      "version": "1.0.3",
       "license": "MIT",
       "min_securo_version": "0.20.0",
       "contributes": {
@@ -190,19 +190,20 @@
       "stars": 1,
       "stars_7d": 0,
       "added_at": "2026-11-18T20:40:34Z",
-      "updated_at": "2026-11-23T18:58:04Z",
-      "readme": "readmes/jschaufuss--securo-ing-fints--059110995fcccabc362300f88b1a61309124b1c8.md",
+      "updated_at": "2026-11-24T07:45:39Z",
+      "readme": "readmes/jschaufuss--securo-ing-fints--745d40862fb171dd6f226e21241a73acbdfab5af.md",
       "readme_sha256": "ac9e6e0474447d9e7c177e35be0c51e495b2ead2f04d6e1bfd799378e440273c",
-      "archive": "archives/jschaufuss--securo-ing-fints--059110995fcccabc362300f88b1a61309124b1c8.tar.gz",
-      "archive_sha256": "39a183a6ef6bc1cad3810d8e91b3ba9b84b53698a9f32b6b16a5ac7c0a3f77ab"
+      "icon": "icons/6438b812c29504095d81aa72ee48003f7d97721ee7b710130e01dee761d4f4a7.png",
+      "archive": "archives/jschaufuss--securo-ing-fints--745d40862fb171dd6f226e21241a73acbdfab5af.tar.gz",
+      "archive_sha256": "e809a79dcc4dcc560f0fa7a24ec1840baeea15078544e7bf8734aad192914c43"
     },
     {
       "id": "marceltov/securo-ing-fints",
       "repository": "https://github.com/marceltov/securo-ing-fints",
-      "release": "v0.1.0",
-      "commit": "afc23cd33102cfab9f45bf15eac2dda804aee00b",
-      "manifest": "manifests/marceltov--securo-ing-fints--afc23cd33102cfab9f45bf15eac2dda804aee00b.json",
-      "manifest_sha256": "90a427229f66e1ae8ff1a5a4f327e2e573bb44263f76737653fabeda3cea46ed",
+      "release": "v0.2.0",
+      "commit": "82874fba0206b9f8f3afa12a5887e4ada297b1f9",
+      "manifest": "manifests/marceltov--securo-ing-fints--82874fba0206b9f8f3afa12a5887e4ada297b1f9.json",
+      "manifest_sha256": "440b8f7df642e14391afdde4cbbe15fdb0c04b24357f62d384db70baf3578040",
       "name": {
         "en": "ING Germany (FinTS)",
         "de": "ING Deutschland (FinTS)"
@@ -211,7 +212,7 @@
         "en": "Read-only ING Germany sync over FinTS: Girokonto with pending entries, Extra-Konten and Direkt-Depot positions with their buy-in, with readable payees and descriptions.",
         "de": "Lesender ING-Abruf über FinTS: Girokonto mit vorgemerkten Umsätzen, Extra-Konten und Direkt-Depot-Positionen mit Einstandskurs, mit lesbaren Empfängern und Verwendungszwecken."
       },
-      "version": "0.1.0",
+      "version": "0.2.0",
       "license": "MIT",
       "min_securo_version": "0.20.0",
       "contributes": {
@@ -231,19 +232,19 @@
       "stars": 0,
       "stars_7d": 0,
       "added_at": "2026-11-23T07:52:24Z",
-      "updated_at": "2026-11-23T07:54:57Z",
-      "readme": "readmes/marceltov--securo-ing-fints--afc23cd33102cfab9f45bf15eac2dda804aee00b.md",
-      "readme_sha256": "0522df1a8c5fb66647d7cdcaf4f37f5d6e19c79872e2119b8c2939b8a0277080",
-      "archive": "archives/marceltov--securo-ing-fints--afc23cd33102cfab9f45bf15eac2dda804aee00b.tar.gz",
-      "archive_sha256": "89afb9c85e2a38e8056b44c138d02f01d81efce8a81500cd6cef908b37b06252"
+      "updated_at": "2026-11-24T08:42:34Z",
+      "readme": "readmes/marceltov--securo-ing-fints--82874fba0206b9f8f3afa12a5887e4ada297b1f9.md",
+      "readme_sha256": "3c4b0d92bb8c48fcfacad7687941767474096c108e33c13a4cdc3277317b8b77",
+      "archive": "archives/marceltov--securo-ing-fints--82874fba0206b9f8f3afa12a5887e4ada297b1f9.tar.gz",
+      "archive_sha256": "341f2fe9ecb2d28b2eaa3f16ee9ddf3ec04e0565c7679d3a2b7fb763decfcdc4"
     },
     {
       "id": "marceltov/securo-trade-republic",
       "repository": "https://github.com/marceltov/securo-trade-republic",
-      "release": "v0.2.2",
-      "commit": "5d9fb10331b64e72191bfd543f43192e5b447d69",
-      "manifest": "manifests/marceltov--securo-trade-republic--5d9fb10331b64e72191bfd543f43192e5b447d69.json",
-      "manifest_sha256": "7fdba69a15c541ecf206d7c5ddab849806740cdf7f77addf3922afa506ae9db9",
+      "release": "v0.2.3",
+      "commit": "f256929e0aa7f7e541ca3bad9b73246b12fb6c12",
+      "manifest": "manifests/marceltov--securo-trade-republic--f256929e0aa7f7e541ca3bad9b73246b12fb6c12.json",
+      "manifest_sha256": "30d120b4d5ef908f550f1262f9f0303cfc9f168db1a76b0a018b1e6920c4e3a3",
       "name": {
         "en": "Trade Republic",
         "de": "Trade Republic"
@@ -252,7 +253,7 @@
         "en": "Read-only Trade Republic sync: cash account with readable transactions (booked and pending) and depot positions. Syncs only when you press Sync.",
         "de": "Lesender Trade-Republic-Abruf: Verrechnungskonto mit lesbaren Umsätzen (gebucht und vorgemerkt) und Depotpositionen. Ruft nur ab, wenn du auf Synchronisieren drückst."
       },
-      "version": "0.2.2",
+      "version": "0.2.3",
       "license": "MIT",
       "min_securo_version": "0.20.0",
       "contributes": {
@@ -271,11 +272,11 @@
       "stars": 0,
       "stars_7d": 0,
       "added_at": "2026-11-20T20:30:31Z",
-      "updated_at": "2026-11-23T08:18:58Z",
-      "readme": "readmes/marceltov--securo-trade-republic--5d9fb10331b64e72191bfd543f43192e5b447d69.md",
-      "readme_sha256": "f65f269d4271bf3b65b9fc15af04260e4f66561675dfd837cd054563496a4bb2",
-      "archive": "archives/marceltov--securo-trade-republic--5d9fb10331b64e72191bfd543f43192e5b447d69.tar.gz",
-      "archive_sha256": "065b5fcdc54c91d3f0c381976d87dbb24e5b31491e161fb73f5f2f75cd5d4020"
+      "updated_at": "2026-11-24T07:26:21Z",
+      "readme": "readmes/marceltov--securo-trade-republic--f256929e0aa7f7e541ca3bad9b73246b12fb6c12.md",
+      "readme_sha256": "3e3b39e82e85bcde7bb7ac1b27def2a0d7acec17ea85ff0f15f4ecfe3b517bc6",
+      "archive": "archives/marceltov--securo-trade-republic--f256929e0aa7f7e541ca3bad9b73246b12fb6c12.tar.gz",
+      "archive_sha256": "2ffa96bbad1b1d2e7a1db903002591e052cb2135d3e0a57b14d5cdb1d12fe9d6"
     },
     {
       "id": "nunomluz/securo-kraken",
@@ -402,8 +403,8 @@
         "securo",
         "theme"
       ],
-      "stars": 2,
-      "stars_7d": 1,
+      "stars": 3,
+      "stars_7d": 2,
       "added_at": "2026-11-14T15:35:57Z",
       "updated_at": "2026-11-19T21:01:48Z",
       "readme": "readmes/securo-finance--plugin-neon-themes--a5bedea2181c908f17052e0773f86a994c6f765f.md",

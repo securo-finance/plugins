@@ -8,13 +8,11 @@
     "en": "Read-only Trade Republic sync: cash account with readable transactions (booked and pending) and depot positions. Syncs only when you press Sync.",
     "de": "Lesender Trade-Republic-Abruf: Verrechnungskonto mit lesbaren Umsätzen (gebucht und vorgemerkt) und Depotpositionen. Ruft nur ab, wenn du auf Synchronisieren drückst."
   },
-  "version": "0.2.2",
+  "version": "0.2.3",
   "repository": "https://github.com/marceltov/securo-trade-republic",
   "license": "MIT",
   "min_securo_version": "0.20.0",
-  "workspaces": [
-    "personal"
-  ],
+  "workspaces": ["personal"],
   "runtime": {
     "entrypoint": "trade_republic.plugin:plugin",
     "lockfile": "requirements.txt"
@@ -59,12 +57,7 @@
             "secret": true
           }
         ],
-        "provides": [
-          "accounts",
-          "transactions",
-          "holdings",
-          "trades"
-        ]
+        "provides": ["accounts", "transactions", "holdings", "trades"]
       }
     ]
   }
