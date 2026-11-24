@@ -74,7 +74,7 @@
         "securo"
       ],
       "stars": 4,
-      "stars_7d": 4,
+      "stars_7d": 2,
       "added_at": "2026-11-16T22:17:36Z",
       "updated_at": "2026-11-20T22:09:45Z",
       "readme": "readmes/fredson-sumi--securo-ibkr--346962d535609c663c561a95e467a71de0e6f328.md",
@@ -131,16 +131,17 @@
     {
       "id": "jschaufuss/securo-fixed-costs-report",
       "repository": "https://github.com/jschaufuss/securo-fixed-costs-report",
-      "release": "v1.0.2",
-      "commit": "fd05403f75c574406211a686a3e0f087d425300b",
-      "manifest": "manifests/jschaufuss--securo-fixed-costs-report--fd05403f75c574406211a686a3e0f087d425300b.json",
-      "manifest_sha256": "98bf350157d829206ce06f1ed6c320dff5a4fce39f6372b7acbcf6e7101630b0",
+      "release": "v1.1.0",
+      "commit": "154d4bbaf3e7369f6412dc69f45e1ac547c33202",
+      "manifest": "manifests/jschaufuss--securo-fixed-costs-report--154d4bbaf3e7369f6412dc69f45e1ac547c33202.json",
+      "manifest_sha256": "07b3cb83c28067bfc6348702cb52d0fcb4a9b77cf9007406c23665c05e3175f5",
       "name": "Fixed Costs and Subscriptions",
       "description": "Finds potentially recurring expenses and shows their monthly cost.",
-      "version": "1.0.2",
+      "version": "1.1.0",
       "license": "MIT",
-      "min_securo_version": "0.21.0",
+      "min_securo_version": "0.22.0",
       "contributes": {
+        "widgets": 4,
         "reports": 1
       },
       "workspaces": [
@@ -151,15 +152,15 @@
         "en"
       ],
       "topics": [],
-      "stars": 0,
+      "stars": 1,
       "stars_7d": 0,
       "added_at": "2026-11-24T00:02:05Z",
-      "updated_at": "2026-11-23T19:22:07Z",
-      "readme": "readmes/jschaufuss--securo-fixed-costs-report--fd05403f75c574406211a686a3e0f087d425300b.md",
-      "readme_sha256": "e8f36dac1939311df0693891e65521d895b4286bd38e49fac234a6fae01ecc39",
+      "updated_at": "2026-11-24T15:52:08Z",
+      "readme": "readmes/jschaufuss--securo-fixed-costs-report--154d4bbaf3e7369f6412dc69f45e1ac547c33202.md",
+      "readme_sha256": "469bcc1fe0ed7059064430619fdde3d8cb662b5054db200b47c99128f3f06dc6",
       "icon": "icons/8f0499dc6303f784b0a9b458d4a9be22707c47aeb6ae83d4815168279a78a03e.webp",
-      "archive": "archives/jschaufuss--securo-fixed-costs-report--fd05403f75c574406211a686a3e0f087d425300b.tar.gz",
-      "archive_sha256": "37ebc481ca0488200e9a8a8a879dc4f73aaf024dc341e06edeadaea95ed7593b"
+      "archive": "archives/jschaufuss--securo-fixed-costs-report--154d4bbaf3e7369f6412dc69f45e1ac547c33202.tar.gz",
+      "archive_sha256": "8a43c3590a87e977cfe65a99d76d10662a26b1cbb1944181e1b701b873f6ca65"
     },
     {
       "id": "jschaufuss/securo-ing-fints",
@@ -404,7 +405,7 @@
         "theme"
       ],
       "stars": 3,
-      "stars_7d": 2,
+      "stars_7d": 1,
       "added_at": "2026-11-14T15:35:57Z",
       "updated_at": "2026-11-19T21:01:48Z",
       "readme": "readmes/securo-finance--plugin-neon-themes--a5bedea2181c908f17052e0773f86a994c6f765f.md",

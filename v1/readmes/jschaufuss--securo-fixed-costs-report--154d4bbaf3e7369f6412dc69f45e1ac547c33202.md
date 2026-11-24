@@ -1,6 +1,10 @@
 # Fixed Costs and Subscriptions for Securo
 
-A report plugin for Securo 0.21.0 or newer. It detects possible recurring expenses and shows estimated monthly costs, annualized costs, the largest monthly equivalent, payment details, a category breakdown and a six-month estimated-cost trend. The annualized figure is 12 times the current monthly estimate, not a forecast of exact future payments. When enough history is available, the monthly estimate also shows its change from the previous month.
+A report plugin for Securo 0.22.0 or newer. It detects possible recurring expenses and shows estimated monthly costs, annualized costs, the largest monthly equivalent, payment details, a category breakdown and a six-month estimated-cost trend. The annualized figure is 12 times the current monthly estimate, not a forecast of exact future payments. When enough history is available, the monthly estimate also shows its change from the previous month.
+
+The optional dashboard widget shows estimated monthly and annualized costs, the count of possible recurring payments, and a paginated list of up to 1,000 detected payments. Add it from the dashboard library. It uses up to twelve months of history ending with the selected dashboard month, so annual payments may not have enough history to be detected. Amounts are estimates and may include non-monthly payments converted to a monthly equivalent; the annualized estimate is twelve times the monthly estimate.
+
+Three additional compact widgets show monthly costs, annualized costs, and a shorter paginated recurring-payments list separately.
 
 > [!WARNING]
 > This plugin was developed with AI assistance. Its detection is heuristic and can miss payments or identify ordinary purchases as recurring costs. Review the results before relying on them for financial decisions.
@@ -14,6 +18,14 @@ The report overview shows estimated costs and possible recurring payments:
 The category breakdown and trend show how estimated costs are distributed and change over time:
 
 ![Category breakdown and estimated monthly cost trend](docs/screenshots/category-and-trend.png)
+
+The dashboard overview combines estimates and the recurring payments list:
+
+![Dashboard overview widget](docs/screenshots/dashboard-overview.png)
+
+The compact dashboard widgets can be placed independently:
+
+![Compact dashboard widgets](docs/screenshots/dashboard-compact.png)
 
 ## Using the report
 
@@ -41,7 +53,7 @@ Run the unit tests with:
 python3 -m unittest discover -s tests -v
 ```
 
-The integration test uses the real Securo 0.21.0 runner and its test fixtures. After installing development dependencies in a Securo checkout, run from its `backend` directory:
+The integration test uses the real Securo 0.22.0 runner and its test fixtures. After installing development dependencies in a Securo checkout, run from its `backend` directory:
 
 ```sh
 export FIXED_COSTS_PLUGIN_DIR=/absolute/path/to/securo-fixed-costs-report
