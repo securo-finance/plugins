@@ -524,6 +524,41 @@
       "readme": "readmes/securo-finance--plugin-streaming--cc7f15a3366512b4d2c984e377333496d7f7ff3f.md",
       "readme_sha256": "f49e4cf55097d2c270e406d7fe1630532e1b375b61e1cbfc52791c5db3ce7e09",
       "icon": "icons/8c4c56048b01302c647f1e7512a559f864ab1ba6ceca935f2a85092060de02a1.png"
+    },
+    {
+      "id": "waterlilith0/securo-generic-fints",
+      "repository": "https://github.com/waterlilith0/securo-generic-fints",
+      "release": "1.0.0",
+      "commit": "a85a648c93f757652567ac9af977e262f2dd287b",
+      "manifest": "manifests/waterlilith0--securo-generic-fints--a85a648c93f757652567ac9af977e262f2dd287b.json",
+      "manifest_sha256": "c302a076b737fcdfe14cf051b543edd96de150c14f3b16e0fca4b398e07e754c",
+      "name": {
+        "en": "German FinTS"
+      },
+      "description": {
+        "en": "Read-only sync of accounts and transactions from supported German FinTS banks."
+      },
+      "version": "1.0.0",
+      "license": "MIT",
+      "min_securo_version": "0.20.0",
+      "contributes": {
+        "integrations": 1
+      },
+      "workspaces": [
+        "personal"
+      ],
+      "locales": [
+        "en"
+      ],
+      "topics": [],
+      "stars": 0,
+      "stars_7d": 0,
+      "added_at": "2026-11-26T16:53:43Z",
+      "updated_at": "2026-11-26T10:52:36Z",
+      "readme": "readmes/waterlilith0--securo-generic-fints--a85a648c93f757652567ac9af977e262f2dd287b.md",
+      "readme_sha256": "f7977c756f6078013d051cef42b7f182057b1880303314471fa3f3e67e236e49",
+      "archive": "archives/waterlilith0--securo-generic-fints--a85a648c93f757652567ac9af977e262f2dd287b.tar.gz",
+      "archive_sha256": "a0ff17cf94e328d05e2d1ae2398d1278737ded16d74ec2f7a110c00b80d19f56"
     }
   ]
 }

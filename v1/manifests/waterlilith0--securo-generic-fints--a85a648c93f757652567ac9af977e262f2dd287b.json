@@ -1,0 +1,123 @@
+{
+  "id": "waterlilith0/securo-generic-fints",
+  "name": {
+    "en": "German FinTS"
+  },
+  "description": {
+    "en": "Read-only sync of accounts and transactions from supported German FinTS banks."
+  },
+  "version": "1.0.0",
+  "repository": "https://github.com/waterlilith0/securo-generic-fints",
+  "license": "MIT",
+  "min_securo_version": "0.20.0",
+  "workspaces": ["personal"],
+  "runtime": {
+    "entrypoint": "fints_bank:plugin",
+    "lockfile": "requirements.txt"
+  },
+  "network": [
+    {
+      "host": "fints1.atruvia.de",
+      "purpose": {
+        "en": "Connect to GLS Bank and supported Atruvia FinTS endpoints."
+      }
+    },
+    {
+      "host": "fints2.atruvia.de",
+      "purpose": {
+        "en": "Connect to supported German Atruvia FinTS endpoints."
+      }
+    },
+    {
+      "host": "fints.ing.de",
+      "purpose": {
+        "en": "Connect to the ING Germany FinTS endpoint."
+      }
+    },
+    {
+      "host": "hbci-pintan.gad.de",
+      "purpose": {
+        "en": "Connect to supported legacy GAD FinTS endpoints."
+      }
+    },
+    {
+      "host": "fints.comdirect.de",
+      "purpose": {
+        "en": "Connect to the comdirect FinTS endpoint."
+      }
+    },
+    {
+      "host": "fints.deutsche-bank.de",
+      "purpose": {
+        "en": "Connect to the Deutsche Bank FinTS endpoint."
+      }
+    },
+    {
+      "host": "fints.dkb.de",
+      "purpose": {
+        "en": "Connect to the DKB FinTS endpoint."
+      }
+    }
+  ],
+  "contributes": {
+    "integrations": [
+      {
+        "key": "ing",
+        "name": {
+          "en": "German FinTS Banks"
+        },
+        "description": {
+          "en": "Choose a supported bank/provider profile and sync its accounts and transactions. No payments are initiated."
+        },
+        "auth": "credentials",
+        "fields": [
+          {
+            "key": "bank_profile",
+            "label": {
+              "en": "Bank profile (enter one: atruvia, atruvia-1, gls, ing, gad, comdirect, deutsche-bank, dkb)"
+            },
+            "required": false
+          },
+          {
+            "key": "blz",
+            "label": {
+              "en": "Bank code (BLZ; 8 digits; not needed for fixed GLS/ING profiles)"
+            },
+            "required": false
+          },
+          {
+            "key": "login",
+            "label": {
+              "en": "FinTS user ID"
+            },
+            "secret": true
+          },
+          {
+            "key": "pin",
+            "label": {
+              "en": "Online banking password or PIN"
+            },
+            "secret": true
+          },
+          {
+            "key": "account_ibans",
+            "label": {
+              "en": "Account IBANs to sync (comma-separated; empty = all)"
+            },
+            "secret": true,
+            "required": false
+          },
+          {
+            "key": "history_days",
+            "label": {
+              "en": "Transaction history days (default 85; max 89)"
+            },
+            "required": false
+          }
+        ],
+        "sync_minutes": 360,
+        "provides": ["accounts", "transactions"]
+      }
+    ]
+  }
+}
