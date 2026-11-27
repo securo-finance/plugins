@@ -165,17 +165,17 @@
     {
       "id": "jschaufuss/securo-ing-fints",
       "repository": "https://github.com/jschaufuss/securo-ing-fints",
-      "release": "v1.0.3",
-      "commit": "745d40862fb171dd6f226e21241a73acbdfab5af",
-      "manifest": "manifests/jschaufuss--securo-ing-fints--745d40862fb171dd6f226e21241a73acbdfab5af.json",
-      "manifest_sha256": "eaed69aa9df1f9b142e86253827a735b3fefbe91d8a98043711c7ce9ba906297",
+      "release": "v1.0.4",
+      "commit": "a17408c5cabe51434e65b66702806016ae570ddd",
+      "manifest": "manifests/jschaufuss--securo-ing-fints--a17408c5cabe51434e65b66702806016ae570ddd.json",
+      "manifest_sha256": "ba07525c3c910ab56ca2b34a55d17fc165de839a8787757cafe5e3115cb471d7",
       "name": {
         "en": "ING Germany (FinTS)"
       },
       "description": {
         "en": "Read-only ING Germany FinTS bank sync (checking, savings; optional experimental holdings)."
       },
-      "version": "1.0.3",
+      "version": "1.0.4",
       "license": "MIT",
       "min_securo_version": "0.20.0",
       "contributes": {
@@ -191,12 +191,12 @@
       "stars": 1,
       "stars_7d": 0,
       "added_at": "2026-11-18T20:40:34Z",
-      "updated_at": "2026-11-24T07:45:39Z",
-      "readme": "readmes/jschaufuss--securo-ing-fints--745d40862fb171dd6f226e21241a73acbdfab5af.md",
-      "readme_sha256": "ac9e6e0474447d9e7c177e35be0c51e495b2ead2f04d6e1bfd799378e440273c",
+      "updated_at": "2026-11-27T07:03:58Z",
+      "readme": "readmes/jschaufuss--securo-ing-fints--a17408c5cabe51434e65b66702806016ae570ddd.md",
+      "readme_sha256": "6cff573dfa389967e8e91b74d27252d2ee899b28dd0303230b2ae8de82575fcf",
       "icon": "icons/6438b812c29504095d81aa72ee48003f7d97721ee7b710130e01dee761d4f4a7.png",
-      "archive": "archives/jschaufuss--securo-ing-fints--745d40862fb171dd6f226e21241a73acbdfab5af.tar.gz",
-      "archive_sha256": "e809a79dcc4dcc560f0fa7a24ec1840baeea15078544e7bf8734aad192914c43"
+      "archive": "archives/jschaufuss--securo-ing-fints--a17408c5cabe51434e65b66702806016ae570ddd.tar.gz",
+      "archive_sha256": "567af69b9838e50ae1b6adb6aadc997161b83b19cf803d3962999b433ff2fd7c"
     },
     {
       "id": "marceltov/securo-ing-fints",
